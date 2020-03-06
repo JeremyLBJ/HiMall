@@ -1,0 +1,82 @@
+.header{overflow: hidden}
+.header-content{width: 1220px;margin: 0 auto;padding: 15px 0;overflow: hidden;font-size: 14px}
+.header-content a{color: #343434}
+.header-content a:hover{color: red}
+.header-content .header-zuo{float: left;overflow: hidden}
+.header-content .header-zuo a:nth-of-type(1){background: url("../images/gouwuche/dsImg_11.jpg")no-repeat 50px;padding-right: 20px}
+.header-content .header-you {float: right;overflow: hidden}
+.header-content .header-you ul li{float: left;padding: 0 30px;}
+.header-content .header-you ul li+li{border-left: 1px solid #ccc;}
+.header-content .header-you ul li a{background: url("../images/gouwuche/dsImg_11.jpg")no-repeat right;padding-right: 15px}
+.header-content .header-you ul li:nth-of-type(1) a, .header-content .header-you ul li:last-child a{background-image: none}
+.header-content .header-you ul li:last-child{background: url("../images/gouwuche/dsImg_15.jpg")no-repeat 8px;padding-left: 50px}
+.header-content .header-you ul li:nth-of-type(3) {background: url("../images/gouwuche/dsImg_13.jpg")no-repeat 14px;}
+.header-content .header-you ul li:nth-of-type(3):hover{background: url("../images/gouwuche/dsImg_14.jpg")no-repeat 14px;}
+.sousuo{background:#F1323B;overflow: hidden }
+.sousuo-content{background:#F1323B;width: 1220px;margin: 0 auto;padding: 20px 0;overflow: hidden}
+.sousuo-content h1{font-size: 28px;font-weight: 600;color: white;float: left}
+.sousuo-content div{float: right;width: 545px;height: 45px;background: white;border-radius: 10px}
+.sousuo-content div img{float: left;margin-left: 10px}
+.sousuo-content div  input{width:370px;height:45px;border: none}
+.sousuo-content div d{display:inline-block;background: #343434;color: white;height: 45px;width:120px ;float: right;line-height: 45px;text-align: center;border-radius: 10px;}
+.nav{overflow: hidden}
+.nav-content{width: 1220px;margin: 0 auto;overflow: hidden;padding: 20px 0;font-size: 14px}
+.nav-content dl dt{float: left}
+.nav-content dl dd{float: left;margin-left: 25px}
+.nav-content dl dd a{color:#343434;}
+.nav-content dl dd em{padding-left: 20px}
+.main{overflow: hidden}
+.main-content{width: 1220px;height:auto;overflow: hidden;margin: 0 auto}
+.main-content .img{width: 440px;overflow: hidden;margin:110px auto}
+.main-content .img img{float: left}
+.main-content .img span:nth-of-type(1){color:#343434;font-size: 28px}
+.main-content .img span a{color: red}
+.main-content div table{font-size:14px;display: none;width: 1220px;}
+.main-content div table thead tr:nth-of-type(1){color:#8B8B8B; }
+.main-content div table thead tr:nth-of-type(2) td{padding-top: 30px}
+.main-content div table thead tr td:nth-of-type(3){text-align: center}
+.main-content div table tbody tr td:nth-of-type(3) span{display: inline-block;width: 30px ;height: 30px;line-height: 30px;text-align: center;background:#CBCBCB;position: absolute;top:11px;font-size: 22px;}
+.main-content div table tbody tr td:nth-of-type(3) em{display: inline-block;border: 1px solid #ccc;height:50px;width: 300px;line-height: 50px}
+.main-content div table tbody tr td:nth-of-type(3) .jian{background-position:-36px 6px;margin-left: 20px ;cursor: pointer}
+.main-content div table tbody tr td:nth-of-type(3) .jia{background-position:5px 6px;cursor: pointer}
+.main-content div table tbody tr td:nth-of-type(3) i{position: relative;border-left: 1px solid #ccc;display: inline-block;width:150px;margin-left:30px}
+.main-content div table tbody tr td:nth-of-type(3) input{width: 40px;height:25px;margin-left:46px}
+.main-content div table tbody tr td{width: 100px;border-top: 1px solid #ccc;}
+.main-content div table tbody tr td:nth-of-type(1) input{float: left}
+.main-content div table tbody tr td:nth-of-type(2){width: 200px;}
+.main-content div table tbody tr td:nth-of-type(6){color:red;font-weight:800}
+.main-content div table tbody tr td:nth-of-type(2) span{color: #5D5D5D}
+.main-content div table tbody tr td:nth-of-type(3){width: 450px;text-align: center;}
+.main-content div table tbody tr td:last-of-type{background: url("../images/gouwuche/dsImg_56.jpg")no-repeat left;cursor: pointer}
+.main-content div table tbody tr td:last-of-type:hover{background: url("../images/gouwuche/dsImg_71.jpg")no-repeat left;}
+.main-content div table tbody tr td img{width: 100px;height:100px;margin-left: 30px}
+.main-content div table tbody tr{height: 157px;border-bottom: 1px solid #ccc;}
+.main-content div table tfoot tr:nth-of-type(1) td{border-top: 1px solid #ccc;padding-top: 15px}
+.main-content div table tfoot tr:nth-of-type(1){text-align: right}
+.main-content div table tfoot tr:nth-of-type(1) button{background: #F1323B;width: 150px;height:60px;border: none;font-size: 18px ;font-weight: 600;color: white}
+.main-content div table tfoot tr:nth-of-type(2) a{color:#8b8b8b}
+.main-content .bg table tfoot tr:nth-of-type(1) td span,.main-content .bg table tfoot tr:nth-of-type(1) td em{font-size: 18px;font-weight:600;color:red}
+
+
+.lishi{overflow: hidden}
+.lishi-content{width: 1220px;height: auto;overflow: hidden;margin: 20px auto;border-bottom: 1px solid #ccc}
+.lishi-content ul li{float: left;padding: 20px 20px;margin: 0 15px;font-size: 20px}
+.lishi-content ul li:last-child{float: right}
+.lishi-content ul li:last-child span{height:30px;width: 20px;background: #DCDCDC;color: #666666;margin: 0 5px;display: inline-block;font-size: 14px;line-height: 30px;text-align: center}
+
+.footer{overflow: hidden;background: #282828}
+.footer-contennt{width: 1220px;height: auto;overflow: hidden;margin: 0 auto;background: #282828}
+.footer-contennt .footer-tou ul{overflow: hidden;margin: 0 auto}
+.footer-contennt .footer-tou{overflow: hidden}
+.footer-contennt .footer-tou ul li{overflow:hidden;float: left;margin: 0 30px}
+.footer-contennt .footer-zhong ul{float: left;margin-right:100px}
+.footer-contennt .footer-zhong ul li{overflow:hidden;;width: 250px;line-height: 32px;font-size: 14px;color: #8B8B8B}
+.footer-contennt .footer-zhong{overflow: hidden;padding: 40px 0}
+.footer-contennt .footer-zhong ul li:nth-of-type(1){color: white;font-weight: 600;}
+.footer-contennt .footer-zhong dl{float: left;font-size: 14px;line-height: 32px;margin-left: 50px}
+.footer-contennt .footer-zhong dl dt{font-size:14px;font-weight: 600;color: white}
+.footer-contennt .footer-zhong dl dd{color: #8B8B8B;}
+.footer-di{overflow: hidden;padding: 20px 0}
+.footer-di span{color: #8B8B8B}
+.footer-di span:nth-of-type(2) img{float: left;margin-right: 15px}
+.footer-di span:nth-of-type(2){float: right}

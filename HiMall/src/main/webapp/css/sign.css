@@ -1,0 +1,66 @@
+/*头部*/
+.header{background:#F3F3F3;}
+.header-content{background:#F3F3F3;width:1220px;height:auto;overflow:hidden;font-size:12px;color:#666666;margin:0 auto;line-height:30px}
+.header-zuo{float:left}
+.header-zuo span{color:#666666;margin:0 10px;}
+.header-zuo a,.header-you a{color:#666666;}
+.header-zuo img{float:left;margin-top:6px}
+.header-you{float:right}
+.header-you ul li{float:left;background-image:url("../images/sign/tuitop_ico.png");background-repeat:no-repeat;padding-left:22px;margin-left:10px}
+.header-you ul li:nth-of-type(1){background-position:0 2px}
+.header-you ul li:nth-of-type(2){background-position:0 -25px}
+.header-you ul li:nth-of-type(3){background-position:0 -53px}
+.header-you ul li:nth-of-type(4){background-position:0 -80px}
+
+/*主体*/
+.main{width:auto;height:auto;}
+.main-content{width:1000px;height:auto;margin:0 auto}
+.main-content>img{margin:25px 0;}
+.main-content .buzou{border-bottom:2px solid #E6E6E6;overflow:hidden}
+.main-content .buzou ul li{float:left;padding:5px 29px;margin:0 75px;font-weight:bold}
+ .cont{border-bottom:2px solid #C40000}
+.main-content .buzou ul li span{display:inline-block;width:20px;height:20px;border-radius:10px;background:#C40000;color:white;text-align:center;margin-right:5px}
+.main-content .neirong{overflow:hidden;}
+.main-content .neirong ul li{width:400px;color:#666666;font-size:12px;margin:0 auto;padding-top:20px;}
+.main-content .neirong ul li p{margin:25px 0;width:700px;overflow: hidden;position: relative ;}
+.main-content .neirong ul li input{width:260px;height:35px}
+.main-content .neirong ul li p span{display:inline-block;width:57px;text-align:right;margin-right:15px}
+.one form p label.error,.two form p label.error{border: 1px solid #FDBCBD;height:37px;display: inline-block;line-height: 37px;background: #FDEAEA;color:#FD0001;position: absolute;margin-left: 5px;padding-right: 10px}
+
+form p label img{vertical-align: middle;display: inline-block;margin-right: 10px;}
+.one form p:nth-of-type(2) i{background: url("../images/sign/elements.png");background-repeat: no-repeat;background-position: -33px -96px;display: inline-block;width: 30px;height: 18px;position: absolute;left: 300px;top:10px;}
+.one form p:nth-of-type(3) label{margin-left: 165px}
+.one form p:nth-of-type(3) span{float:left;line-height:35px}
+.one form p:nth-of-type(3) input{width:100px;float:left}
+.one form p:nth-of-type(3) i{display:inline-block;width:100px;height:35px;border:1px solid #ccc;float:left;margin:0 10px}
+.one form p:nth-of-type(3) i img{width: 80px;height:30px;margin:auto;margin-top: 3px}
+.one form p:nth-of-type(3)>img{padding-top:5px;cursor: pointer}
+.one form p:nth-of-type(4){color:black;padding:10px 0}
+.one form p:nth-of-type(4) label{position: absolute;left:335px;top:0}
+.one form p:nth-of-type(4) input,.two form p:nth-of-type(3) input{width:13px;height:13px;vertical-align:middle;margin-left:50px;}
+.one form p:nth-of-type(4) a{color:#005AA0}
+.one button,.two button{width:280px;height:35px; border:none;color:white;background:#C40000;margin-left:70px;border-radius:5px;}
+.two form p:nth-of-type(3){ color:black;position: relative}
+.two form p:nth-of-type(3) input{margin:5px 0;margin-left:75px;}
+.two form p:nth-of-type(3) span{color:#666666}
+.two form p:nth-of-type(3) label{position: absolute;left:335px;bottom:0}
+.three,.two{display:none}
+
+/*尾部*/
+.footer{height:auto;width:100%;margin-top:20px;background-image:url("../images/index/tuifooter1.jpg");}
+.footer-content-shang{width:1220px; margin:0 auto;background-image:url("../images/index/tuifooter2.jpg");background-repeat:no-repeat;height:auto ;overflow:hidden}
+.footer-content-shang>div{font-size:13px;margin-left:50px;padding-top:180px}
+.footer-content-shang>div dl{float:left;margin:0 20px}
+.footer-content-shang>div dl dd{margin-bottom:15px}
+.footer-content-shang>div dl dt{margin-bottom:5px;}
+.footer-content-shang>div dl dt a{color:#777777}
+.footer-content-shang>div dl dt a:hover{color:orangered}
+.footer-content-shang>div dl:nth-of-type(3){margin-right:40px}
+.footer-content-shang>div dl:nth-of-type(4){margin-right:90px}
+.footer-content-shang>div dl:nth-of-type(5){margin-right:60px}
+.footer-content-xia{width:1220px; margin:10px auto;background:white;height:auto;overflow:hidden;text-align:center;}
+.footer-content-xia img{display:inline-block}
+.footer-content-xia div{margin:10px 0;color:#777777;font-size:13px;}
+.footer-content-xia div p{line-height:20px}
+.footer-content-xia div a{color:#777777}
+.footer-content-xia div a:hover{color:orangered}

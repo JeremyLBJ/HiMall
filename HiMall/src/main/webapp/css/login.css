@@ -1,0 +1,39 @@
+.header{width:1000px;height:auto;margin:30px auto}
+
+
+.main{width:800px;height:auto;overflow:hidden;margin:0 auto}
+.main img{float:left}
+.main .login{width:auto;height:auto;overflow:hidden; float:left;border:1px solid #ccc;padding:15px;margin-left:60px}
+.main .login .name,.pwd{width:275px;height:35px;border:1px solid #ccc;margin-bottom:25px;}
+.main .login div img{margin:10px}
+.main .login .name {background: url("../images/Login/login3.jpg")no-repeat 7px;}
+.main .login .pwd {background: url("../images/Login/login4.jpg")no-repeat 7px;}
+.main .login .name input,.pwd input{float:right;width:245px;height:35px;border:none;float:right;}
+.main .login .wj,.main .login .zc{font-size:12px;color:#7E7E7E;}
+.main .login .wj input{vertical-align:middle}
+.main .login .wj a,.main .login .zc a{float:right;color:#3366CC}
+.main .login .dl #btn{width:275px;height:35px;border:none;border-radius:6px;background:#F3210A;margin:6px 0;color:white}
+.main .login .zc{padding-top:10px;padding-bottom:20px;}
+.main .login .zc span{width:19px;height:18px;display:inline-block;background-image:url("../images/Login/QQ-weixin.png");background-position:19px;vertical-align:middle }
+.main  form div{position: relative;}
+.main  form div label.error{border: 1px solid #FDBCBD;background: #FDEAEA;color:#FD0001;position: absolute;font-size: 12px;background: url("../images/sign/error.png") no-repeat;width: auto;padding:0 20px;top:40px}
+
+
+.footer{width:auto;height:auto;margin-top:150px;background-image:url(../images/Login/tuifooter2_01.jpg);background-repeat:no-repeat;background-size: 100% 156px;box-sizing:border-box}
+.footer-content{width:1220px; margin:0 auto;background-image:url(../images/Login/tuifooter2_02.jpg);background-repeat:no-repeat;}
+.footer-content .shang{width:auto;height:auto;overflow:hidden;;font-size:13px;margin-left:50px;text-align:left}
+.footer-content .shang>a{display:inline-block;width:208px;height:35px;margin-left:70px;margin-top:72px}
+.footer-content .shang dl{float:left;margin:20px 20px}
+.footer-content .shang dl dd{margin-bottom:15px;color:black}
+.footer-content .shang dl dt{margin-bottom:5px;}
+.footer-content .shang dl dt a{color:#777777}
+.footer-content .shang dl dt a:hover{color:orangered}
+.footer-content .shang dl:nth-of-type(3){margin-right:40px}
+.footer-content .shang dl:nth-of-type(4){margin-right:90px}
+.footer-content .shang dl:nth-of-type(5){margin-right:60px}
+.footer-content{width:1220px; margin:10px auto;height:auto;overflow:hidden;text-align:center;}
+.footer-content img{display:inline-block}
+.footer-content div{margin:10px 0;color:#777777;font-size:13px;}
+.footer-content div p{line-height:20px}
+.footer-content div a{color:#777777}
+.footer-content  div a:hover{color:orangered}
