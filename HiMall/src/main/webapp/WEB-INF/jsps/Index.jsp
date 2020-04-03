@@ -97,16 +97,6 @@
 
 				</ul>
 			</div>
-			<ol>
-				<li><a href="#">首页</a></li>
-				<li><a href="#">报活动</a></li>
-				<li><a href="#">9.9专区</a></li>
-				<li><a href="#">拼多多爆款</a></li>
-				<li><a href="#">品牌馆</a></li>
-				<li><a href="#">自媒体专区</a></li>
-				<li><a href="#">实体专供</a></li>
-				<li><a href="#">微商代发</a></li>
-			</ol>
 		</div>
 	</div>
 	<div class="nav-xia">
@@ -206,55 +196,9 @@
 	</div>
 	<div class="maosha">
 		<div class="maosha-content">
-			<h2>多商秒杀</h2>
-			<b>距离结束</b>
-			<!-- <div id="flipcountdownbox1">
-            <div class="xdsoft_flipcountdown xdsoft_size_md"><div class="xdsoft_digit" style="background-position: 0px -625px;"></div><div class="xdsoft_digit" style="background-position: 0px -313px;"></div><div class="xdsoft_digit xdsoft_separator"></div><div class="xdsoft_digit" style="background-position: 0px -1px;"></div><div class="xdsoft_digit" style="background-position: 0px -313px;"></div><div class="xdsoft_digit xdsoft_separator"></div><div class="xdsoft_digit" style="background-position: 0px -1249px;"></div><div class="xdsoft_digit" style="background-position: 0px -313px;"></div><div class="xdsoft_clearex"></div></div>
-        </div> -->
 			<div class="maosha-content-lunbotu">
 				<ul>
-					<li><a href="#"><img
-							src="${pageContext.request.contextPath}../images/index/miaosha1.jpg"
-							alt="">
-							<div class="maosha-xq">
-								<p>【活动款】东方龙崛起 时尚休闲裤 1858</p>
-								<div>
-									<p></p>
-									<span>已售80%</span>
-								</div>
-								<p>已抢4件</p>
-								<p>
-									秒杀价 <em>￥99.90</em><i>￥114.00</i>
-								</p>
-							</div> </a></li>
-					<li><a href="#"><img
-							src="${pageContext.request.contextPath}../images/index/miaosha2.jpg"
-							alt="">
-							<div class="maosha-xq">
-								<p>ANAN 春夏高低扣九分萝卜裤 8601</p>
-								<div>
-									<p></p>
-									<span>已售60%</span>
-								</div>
-								<p>已抢3件</p>
-								<p>
-									秒杀价 <em>￥29.90</em><i>￥79.00</i>
-								</p>
-							</div> </a></li>
-					<li><a href="#"><img
-							src="${pageContext.request.contextPath}../images/index/miaosha3.jpg"
-							alt="">
-							<div class="maosha-xq">
-								<p>ANAN 新款韩版宽松显瘦大口袋萝卜裤女裤 8616</p>
-								<div>
-									<p></p>
-									<span>已售100%</span>
-								</div>
-								<p>已抢5件</p>
-								<p>
-									秒杀价 <em>￥29.90</em><i>￥99.00</i>
-								</p>
-							</div> </a></li>
+				
 				</ul>
 			</div>
 
@@ -273,7 +217,7 @@
 					
 				<ul>
 				<c:forEach items="${d.classificationof }" var="c">
-					<li><a href="${pageContext.request.contextPath}../shopInfo/shopTypeInfo?id=${c.id}&name=${c.cOfName}">${c.cOfName}</a></li>
+					<li><a href="${pageContext.request.contextPath}../shopInfo/shopTypeGoods?id=${c.id}&name=${c.cOfName}">${c.cOfName}</a></li>
 					
 			</c:forEach>
 				</ul>

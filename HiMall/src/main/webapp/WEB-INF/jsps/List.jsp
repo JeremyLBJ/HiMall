@@ -107,7 +107,7 @@
                         <div class="content-list">
                         <c:forEach var="s" items="${slist}">
                             <div class="recom-item">
-                                <a href="${pageContext.request.contextPath}../Detail/shopInfos?id=0">
+                                <a href="${pageContext.request.contextPath}../Detail/shopInfo?id=${s.id}">
 									<p>
 									<!-- 还需要加个下标 -->
 										<img 
@@ -117,7 +117,8 @@
 									</p>
 									<ul>
                                         <li>${s.detail }  </li>
-                                        <li><span>${s.cname }</span> <em> · </em> ${s.price }</li>
+                                        <li>商品名:<span>${s.cname }</span> </li>
+                                        <li>价格: ${s.price }￥</li>
                                     </ul>
                                 </a>
                             </div>

@@ -3,7 +3,9 @@ package com.lhd.HiMall.entity;
 import java.util.Date;
 import java.util.List;
 
+
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ClassificationofGoodsItem {
 	
@@ -103,6 +105,7 @@ public class ClassificationofGoodsItem {
      *
      * @mbg.generated Fri Feb 28 13:22:56 CST 2020
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createtime;
 
     /**

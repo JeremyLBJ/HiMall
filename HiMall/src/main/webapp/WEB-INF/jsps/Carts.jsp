@@ -25,9 +25,9 @@
         </div>
         <div class="header-you">
             <ul>
-                <li><a href="">商城首页</a></li>
-                <li><a href="">在线客服</a></li>
-                <li><a href="">我的购物车 </a></li>
+                <li><a href="${pageContext.request.contextPath}../shouye/index">商城首页</a></li>
+                <li><a href="#">在线客服</a></li>
+                <li><a href="#">我的购物车 </a></li>
             </ul>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <div class="img">
             <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_64.jpg"/>
             <span>您的进货车还没有货品！</span><br>
-            <span>现在<a href="">去逛逛~</a></span>
+            <span>现在<a href="${pageContext.request.contextPath}../shouye/index">去逛逛~</a></span>
         </div>
         <div class="bg">
             <table>
@@ -90,8 +90,6 @@
 <div class="lishi">
     <div class="lishi-content">
         <ul>
-            <li>最近浏览</li>
-            <li>最近收藏</li>
             <li><span><</span><span>></span></li>
         </ul>
         <ol>
@@ -159,16 +157,6 @@
             </dl>
             
             </c:forEach>
-        </div>
-        <div class="footer-di">
-            <span>2019-All rights Reseved</span>
-            <span><img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_29.jpg"/>
-            <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_30.jpg"/>
-            <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_31.jpg"/>
-            <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_32.jpg"/>
-            <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_33.jpg"/>
-            <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_34.jpg"/>
-            </span>
         </div>
     </div>
 </div>

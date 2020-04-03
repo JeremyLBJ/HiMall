@@ -18,6 +18,8 @@ import com.lhd.HiMall.entity.ClassificationType;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
 import com.lhd.HiMall.entity.Imginfo;
 import com.lhd.HiMall.service.ShopInfoService;
+import com.lhd.HiMall.service.ShopItemsService;
+import com.lhd.HiMall.service.ShopTypeService;
 
 /**
  * 商品数据管理
@@ -32,7 +34,13 @@ public class ShopInfoController {
 	private ShopInfoService shopInfoService ;
 	
 	@Autowired
+	private ShopItemsService shopItemService ;
+	
+	@Autowired
 	private ImginfoMapper imginfoMapper ;
+	
+	@Autowired
+	private ShopTypeService shopTypeService ;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -45,32 +53,33 @@ public class ShopInfoController {
 	}
 	
 	@RequestMapping("/shopTypeInfo")
-	public String shopTypeInfo ( @RequestParam(defaultValue="1") int page , Integer id , String name , Model model  ) {
-		List<ClassificationofGoodsItem> goodsItemsById = shopInfoService.goodsItemsById(id) ;
+	public String shopTypeInfo ( @RequestParam(defaultValue="1") int page ,  @RequestParam(defaultValue="1000") int pageSize 
+										, Integer id , String name , Model model  ) {
+		List<ClassificationofGoodsItem> list = this.shopTypeService.queryGppdsByShopTypeId( page , pageSize ,id ) ;
 		List<String> bList = new ArrayList<String>();
 		int totalPages = 0 ;
 		//品牌名称可能相同 在此处把品牌重新存入新集合中
-		if ( goodsItemsById.size() > 0 ) {
-			for ( int i = 0 ; i < goodsItemsById.size() ; i++ ) {
-				String brand = goodsItemsById.get(i).getBrand();
+		if ( list.size() > 0 ) {
+			for ( int i = 0 ; i < list.size() ; i++ ) {
+				String brand = list.get(i).getBrand();
 				if ( ! bList.contains(brand) ) {
 					bList.add(brand) ;
 				}
 			}
-			for ( int i = 0 ; i < goodsItemsById.size() ; i++) {
-				Integer ids =  goodsItemsById.get(i).getId() ;
+			for ( int i = 0 ; i < list.size() ; i++) {
+				Integer ids =  list.get(i).getId() ;
 			     List<Imginfo> findImgPaths = imginfoMapper.findImgPaths(ids);
-			     goodsItemsById.get(i).setImginfos(findImgPaths);
+			     list.get(i).setImginfos(findImgPaths);
 			}
-			if ( goodsItemsById.size() % 16 == 0 ) {
-				totalPages = goodsItemsById.size() / 16 ; 
+			if ( list.size() % 16 == 0 ) {
+				totalPages = list.size() / 16 ; 
 			} else {
-				totalPages = ( goodsItemsById.size() / 16 + 1 )  ;
+				totalPages = ( list.size() / 16 + 1 )  ;
 			}
 		}
 		model.addAttribute("TotalPages", totalPages) ;
 		model.addAttribute("bList", bList) ;
-		model.addAttribute("gList", goodsItemsById ) ;
+		model.addAttribute("gList", list ) ;
 		return "shopTypeInfo" ;
 	}
 	
@@ -182,6 +191,46 @@ public class ShopInfoController {
 			else {
 			      return new Result ( 0 , "失败" ) ;
 			}
+	}
+	
+	
+	/**
+	 * 通过type id关联查询
+	 */
+	@RequestMapping("/shopTypeGoods")
+	public String shopTypeGoods ( @RequestParam(defaultValue="1") int page ,  @RequestParam(defaultValue="16") int pageSize 
+			, Integer id , String name , Model model ) {
+		//查找goodsItem表中关联的id
+		List<Integer> ids = this.shopItemService.queryIds(id) ;
+		//通过id的集合查询商品信息
+		List<ClassificationofGoodsItem> list = this.shopItemService.queryByTypeIds(ids) ;
+		List<String> bList = new ArrayList<String>();
+		int totalPages = this.shopItemService.total(id) ;
+		//品牌名称可能相同 在此处把品牌重新存入新集合中
+		if ( list.size() > 0 ) {
+			for ( int i = 0 ; i < list.size() ; i++ ) {
+				String brand = list.get(i).getBrand();
+				if ( ! bList.contains(brand) ) {
+					bList.add(brand) ;
+				}
+			}
+			for ( int i = 0 ; i < list.size() ; i++) {
+				Integer gId =  list.get(i).getId() ;
+			     List<Imginfo> findImgPaths = imginfoMapper.findImgPaths(gId);
+			     list.get(i).setImginfos(findImgPaths);
+			}
+			if ( list.size() % 16 == 0 ) {
+				totalPages = list.size() / 16 ; 
+			} else {
+				totalPages = ( list.size() / 16 + 1 )  ;
+			}
+		}
+		model.addAttribute("TotalPages", totalPages) ;
+		model.addAttribute("bList", bList) ;
+		model.addAttribute("gList", list ) ;
+		
+		return "shopTypeInfo" ;
+		
 	}
 
 	

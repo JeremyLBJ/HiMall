@@ -21,6 +21,14 @@
   	SELECT ct.* from classificationof cf join classification_type ct on ct.cTionf_id=cf.id where cf.id=#{id} 
   </select>
   
+  <select id="queryByCid" resultMap="BaseResultMap">
+  	SELECT * FROM classification_type ctype WHERE ctype.`id` = #{cid}
+  </select>
+  
+  <select id="queryIds" resultType="java.lang.Integer">
+  	SELECT id FROM classification_type WHERE cTionf_id = #{id}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

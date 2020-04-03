@@ -13,6 +13,11 @@
     	select="com.lhd.HiMall.dao.ClassificationofMapper.findById">
     	</collection>
   </resultMap>
+  
+  <select id="queryById" resultMap="BaseResultMap">
+  		SELECT * FROM classificationofgoods cgs WHERE cgs.`id` = #{id}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

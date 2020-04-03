@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
-
+<!-- 根据类型查找商品 shopType中的id查找 -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,263 +102,21 @@
                         <div class="content-list">
                           <c:forEach items="${gList }" var="g">
                             <div class="recom-item">
-                                <a href="${pageContext.request.contextPath}../Detail/shopInfos?id=0">
+                                <a href="${pageContext.request.contextPath}../Detail/shopInfo?id=${g.id}">
 									<p>
 										<img
-											src="${pageContext.request.contextPath}../img/widget-topBg.png"
+											src="/image/${g.imginfos[0].imgpath}"
 											height="140px" width="100%" alt="">
 										<span class="lab">HOT</span>
 									</p>
 									<ul>
-                                        <li>图片路径只需要获取第一张图片就行${g.imginfos[0].imgpath} </li>
-                                        <li><span>${g.cname }</span> <em> · </em> ${g.price }</li>
+                                        <li>${g.detail} </li>
+                                        <li>商品名: <span>${g.cname }</span> </li>
+                                        <li>价格:  ${g.price }</li>
                                     </ul>
                                 </a>
                             </div>
                           </c:forEach>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" height="140px" width="100%" alt=""><span class="lab">HOT</span></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}${pageContext.request.contextPath}../img/widget-topBg.png" height="140px" width="100%" alt=""><span class="lab">HOT</span></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}${pageContext.request.contextPath}../img/widget-topBg.png" height="140px" width="100%" alt=""><span class="lab">HOT</span></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
-                            <div class="recom-item">
-                                <a href="#">
-                                    <p><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" alt=""></p>
-                                    <ul>
-                                        <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </ul>
-                                </a>
-                            </div>
                             <li class="clearfix"></li>
                         </div>
                         <div class="clearfix"></div>

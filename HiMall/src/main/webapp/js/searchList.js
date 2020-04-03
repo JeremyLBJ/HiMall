@@ -197,7 +197,7 @@ $(function () {
 		//console.log(data.data[i].imginfos[0].imgpath);
 		for ( var i = 0 ; i < data.data.length ; i++ ) {
 			str +=    '<div class="recom-item"> '
-					+ '<a href="../../Detail/shopInfo>'
+					+ '<a href="../../Detail/shopInfo">'
 					+ '<p><img src="/image/'+data.data[i].imginfos[0].imgpath+'" width="100%" alt=""></p>'
 					+ '<ul>'
 					+ '<li>'+data.data[i].detail+' </li>'
@@ -210,7 +210,6 @@ $(function () {
 		//console.log(str) ;
 		
 	}
-	
 	
 	//分页函数  直接在后台進行處理傳入前台  定义好的全局url 
 	function pagesInfo (  urls , params , contentUrl ) {

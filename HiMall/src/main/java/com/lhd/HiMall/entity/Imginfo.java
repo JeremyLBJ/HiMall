@@ -134,4 +134,10 @@ public class Imginfo {
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
+
+	@Override
+	public String toString() {
+		return "Imginfo [id=" + id + ", cid=" + cid + ", imgpath=" + imgpath + ", createtime=" + createtime + "]";
+	}
+    
 }

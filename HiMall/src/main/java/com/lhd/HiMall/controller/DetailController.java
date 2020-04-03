@@ -1,5 +1,6 @@
 package com.lhd.HiMall.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lhd.HiMall.common.Result;
 import com.lhd.HiMall.dao.ImginfoMapper;
+import com.lhd.HiMall.entity.ClassificationType;
+import com.lhd.HiMall.entity.Classificationof;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
 import com.lhd.HiMall.entity.Classificationofgoods;
 import com.lhd.HiMall.entity.Imginfo;
 import com.lhd.HiMall.service.DetailService;
 import com.lhd.HiMall.service.IndexService;
 import com.lhd.HiMall.service.ShopInfoService;
+import com.lhd.HiMall.service.ShopTypeService;
 
 
 /**
@@ -39,6 +43,9 @@ public class DetailController {
 	
 	@Autowired
 	private ImginfoMapper imginfoMapper ;
+	
+	@Autowired
+	private ShopTypeService shopTypeService ;
 	
 	
 	@RequestMapping("/detail")
@@ -75,6 +82,7 @@ public class DetailController {
 				totalPages = ( list.size() / 16 + 1 ) ;
 			}
 		}
+		System.out.println(lists);
 		model.addAttribute("slist",lists) ;
 		model.addAttribute("jumpUrl", "../../Detail/shopInfoFengye?id="+id) ;
 		model.addAttribute("TotalPages", totalPages) ;
@@ -112,9 +120,25 @@ public class DetailController {
 	 */
 	@RequestMapping("/shopInfo")
 	public String shopInfo ( Integer id , Model model ) {
-			// TODO: handle exception
+		//根据id 查询当前商品描述
 		 ClassificationofGoodsItem item = detailService.findById(id) ;
-		 model.addAttribute("iList", item) ;
+		 //根据cid查询上级类型
+		ClassificationType type = this.shopTypeService.queryHeardingTypeByCid(item.getCid() ) ;
+		Integer cOfId = type.getCtionfId() ;
+		//根据cOfId 查询二级类型
+		Classificationof queryHeading = this.shopTypeService.queryHeading(cOfId ) ;
+		Integer shopCid = queryHeading.getCid() ;
+		//查询最高级
+		Classificationofgoods queryById = this.shopTypeService.queryById(shopCid ) ;
+		model.addAttribute("name", type.getName()) ;
+		model.addAttribute("cOfName", queryHeading.getcOfName()) ;
+		model.addAttribute("cTypeName", queryById.getCtypename()) ;
+		model.addAttribute("detail", item.getDetail()) ;
+		model.addAttribute("brand", item.getBrand()) ;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
+		String format = formatter.format(item.getCreatetime()) ;
+		model.addAttribute("creaDate",format) ;
+		model.addAttribute("iList", item) ;
 		return "Detail" ; 
 		
 	}

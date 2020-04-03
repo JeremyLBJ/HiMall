@@ -18,6 +18,10 @@
   	select ctionf.* from classificationofgoods cfg JOIN classificationof ctionf on cfg.id=ctionf.cId WHERE cfg.id=#{id}
   </select>
   
+  <select id="queryByCofId" resultMap="BaseResultMap">
+  	SELECT * FROM classificationof cof WHERE cof.`id` = #{cOfId}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
