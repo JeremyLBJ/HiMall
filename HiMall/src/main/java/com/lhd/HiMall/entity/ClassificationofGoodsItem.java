@@ -24,6 +24,9 @@ public class ClassificationofGoodsItem {
 		@TableField(exist=false)
 		private Integer totalPages ; 
 		
+		@TableField(exist=false)
+		private String brandName ;
+		
 		
 		private List<Imginfo> imginfos ;
     /**
@@ -127,9 +130,15 @@ public class ClassificationofGoodsItem {
     private Integer showstatus;
     
     
-    
-    
-    public Double getPriceOne() {
+    public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public Double getPriceOne() {
 		return priceOne;
 	}
 

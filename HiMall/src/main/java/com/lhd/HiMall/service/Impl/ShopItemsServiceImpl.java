@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.dao.ClassificationTypeMapper;
 import com.lhd.HiMall.dao.ClassificationofGoodsItemMapper;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
@@ -49,6 +52,15 @@ public class ShopItemsServiceImpl implements ShopItemsService{
 		List<Integer> ids = this.cTypeMapper.queryIds(typeId) ;
 		List<ClassificationofGoodsItem> list = this.classificationofGoodsItemMapper.queryByTypeId(ids) ;
 		return list.size() ;
+	}
+
+	@Override
+	public ResultObject queryBySearchName(int page, int PageSize, String brand, Integer priceOne,
+			Integer priceTow) {
+		Page<Object> startPage = PageHelper.startPage(page, PageSize) ;
+		List<ClassificationofGoodsItem> list = this.classificationofGoodsItemMapper.searchGoodsItem(brand, priceOne, priceTow) ;
+		long total = startPage.getTotal() ;
+		return new ResultObject(total, list) ;
 	}
 
 

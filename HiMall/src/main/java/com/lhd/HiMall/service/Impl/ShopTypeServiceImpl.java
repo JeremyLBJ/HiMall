@@ -65,4 +65,10 @@ public class ShopTypeServiceImpl implements ShopTypeService {
 		return item ;
 	}
 
+	@Override
+	public List<ClassificationType> queryTypeDate(Integer id , String name) {
+		List<ClassificationType> list = this.classType.queryDate(id, name) ;
+		return list ;
+	}
+
 }

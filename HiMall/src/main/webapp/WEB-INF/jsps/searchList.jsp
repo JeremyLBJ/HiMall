@@ -49,8 +49,7 @@
         <div class="list-box">
        	 <input type="hidden" value="${jumpUrl}" id="jumpUrl">
             <ul>
-                <li id="name"> 根据您输入的关键字 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-               <font color="blue">  ${ param.name } </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 为您找到如下商品</li>
+                <li id="brandName">${param.name}</li>
             </ul>
             <ul>
                 <li>品牌：</li>

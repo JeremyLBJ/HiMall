@@ -93,21 +93,10 @@
                 <div id="box">
                     <div id="middleImg">
                        <!--  <img src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5bb0460dbe376.jpg"/> -->
-                        <img alt="" src="${pageContext.request.contextPath}../images/xiangqingye/fangdaj/xiao1.jpg"> 
+                        <img alt="" src="/image/${imgPath}"> 
                         <!-- <div id="middleArea"></div> -->
                     </div>
-                    <%-- <div id="small">
-                        <ul>
-                            <li class="bk"><img src="${pageContext.request.contextPath}../images/xiangqingye/xiaotu1.jpg" alt=""></li>
-                            <li><img src="${pageContext.request.contextPath}../images/xiangqingye/xiaotu2.jpg" alt=""></li>
-                            <li><img src="${pageContext.request.contextPath}../images/xiangqingye/xiaotu3.jpg" alt=""></li>
-                            <li><img src="${pageContext.request.contextPath}../images/xiangqingye/xiaotu4.jpg" alt=""></li>
-                            <li><img src="${pageContext.request.contextPath}../images/xiangqingye/xiaotu5.jpg" alt=""></li>
-                        </ul>
-                    </div> --%>
-                   <%--  <div id="bigArea">
-                        <img id="bigImg" src="${pageContext.request.contextPath}../images/xiangqingye/xiaotu1.jpg" height="800" width="800"/>
-                    </div> --%>
+                    
 
                 </div>
                 <div class="zuo-xia">
@@ -213,16 +202,6 @@
                 <p>${creaDate}</p>
 
             </div>
-          <%--   <div class="tuijian">
-                <p>看了又看</p>
-                <ul>
-                    <li><img src="${pageContext.request.contextPath}../images/xiangqingye/tuijian1.jpg" alt=""><span>￥169.10</span>
-                    </li>
-                    <li><img src="${pageContext.request.contextPath}../images/xiangqingye/tuijian2.jpg" alt=""><span>￥158.50</span></li>
-                    <li><img src="${pageContext.request.contextPath}../images/xiangqingye/tuijian3.jpg" alt=""><span>￥116.00</span></li>
-                    <li><img src="${pageContext.request.contextPath}../images/xiangqingye/tuijian4.jpg" alt=""><span>￥250.52</span></li>
-                </ul>
-            </div> --%>
         </div>
     </div>
 </div>

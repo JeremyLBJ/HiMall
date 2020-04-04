@@ -14,25 +14,27 @@ $(function () {
 	//品牌筛选
 	    $('.brand').on('click', function() {
 		brand = $(this).attr("data-id");
+		var brandName = $("#brandName").text() ;
+    	var cId = $("#goodsId").val() ;
 		url = "../../shopInfo/searchBrandOrMoney";
 		$.post("../../shopInfo/searchBrandOrMoney", {
 			brand : brand,
 			moneyOne : moneyOne,
-			moneyTow : moneyTow
+			moneyTow : moneyTow,
+			brandName : brandName,
+			cId : cId
 		}, function(data) {
-			if (data != null){
-				if (data.code == 1) {
-					alert(data.msg);
-					showDatas (data , ".content-list") ;
-					console.log(data.data) ;
-				} else {
-					alert(data.msg);
-				}
+			if (data.code == 1) {
+				showDatas (data , ".content-list") ;
+				totalPages (data.data.length) ;
+				alert(data.msg);
+				console.log(data.data) ;
 			} else {
-				alert("暂无此商品") ;
+				alert(data.msg);
+				$(".content-list").html("<input type='text' value="+data.msg+" style=' color: red;font-size: 14px;height='300px'' readonly='readonly'>" +
+						"<img src='../../img/404.jpg' width='100%' height='230px'/>") ;
 			}
 		})
-		  alert(url) ; 
 	})
     
     //价格区间筛选   因为后面有个 人民币符号 要对值进行两次切割
@@ -44,12 +46,16 @@ $(function () {
     	moneyOne = prices[0] ; 
     	//第二个区间
     	moneyTow = pricestow[0] ;
+    	var brandName = $("#brandName").text() ;
+    	var cId = $("#goodsId").val() ;
     	url = "../../shopInfo/searchBrandOrMoney";
     	//价格和品牌同时筛选
     	$.post("../../shopInfo/searchBrandOrMoney", {
 			brand : brand,
 			moneyOne : moneyOne,
-			moneyTow : moneyTow
+			moneyTow : moneyTow,
+			brandName : brandName,
+			cId : cId
 		}, function(data) {
 			console.log(data) ;
 				if (data.code == 1) {
@@ -63,7 +69,6 @@ $(function () {
 							"<img src='../../img/404.jpg' width='100%' height='230px'/>") ;
 				}
 		})
-		  alert(url) ;
     })
     
     
@@ -158,7 +163,6 @@ $(function () {
     			moneyTow : moneyTow
     		} ) ;
     	}
-    	  alert(url) ;
     })
     
 	      
@@ -197,11 +201,12 @@ $(function () {
 		//console.log(data.data[i].imginfos[0].imgpath);
 		for ( var i = 0 ; i < data.data.length ; i++ ) {
 			str +=    '<div class="recom-item"> '
-					+ '<a href="../../Detail/shopInfo">'
+					+ '<a href="../../Detail/shopInfo?id="'+data.data[i].id+'>'
 					+ '<p><img src="/image/'+data.data[i].imginfos[0].imgpath+'" width="100%" alt=""></p>'
 					+ '<ul>'
 					+ '<li>'+data.data[i].detail+' </li>'
-					+ '<li><span>'+data.data[i].cname+'</span> <em> · </em> '+data.data[i].price+'</li>'
+					+ '<li>商品名:<span>'+data.data[i].cname+'</span></li>'
+					+ ' <li>价格: '+data.data[i].price+'￥</li>'
 					+ '</ul>'
 					+ '</a>'
 					+ '</div>'

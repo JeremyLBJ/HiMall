@@ -33,10 +33,27 @@
   		select * from classificationof_goods_item cgs
   		  <where>
   		  	<if test="name != null and name != ''">
-  		  		cgs.cName LIKE concat('%',#{name},'%')  or cgs.brand LIKE concat('%',#{name},'%')
+  		  		cgs.cName LIKE concat('%',#{name},'%')  
+  		  		or cgs.brand LIKE concat('%',#{name},'%')  
+  		  		 AND cgs.showStatus = 1
   		   </if>
   		  </where>
+  		 
   
+  </select>
+  
+  <select id="searchGoodsItem" resultMap="BaseResultMap">
+	  	select * from classificationof_goods_item cgi
+		  		  <where>
+		  		  <if test="brand != null and brand != ''">
+					    cgi.brand LIKE concat('%',#{brand},'%')
+				</if>
+				<if test="priceOne != null and priceTow != null ">
+						and cgi.price BETWEEN #{priceOne} and #{priceTow}
+				</if>
+				and cgi.showStatus = 1
+		  		  </where>
+		  		order BY cgi.createTime  DESC
   </select>
   
 	  <select id="findShopByDesc" resultMap="BaseResultMap">
@@ -74,6 +91,44 @@
 			</where>
 			and cgi.showStatus = 1
 	</select>
+	
+	<!-- 根据type表的id  筛选 -->
+	<select id="searchByBrandsOrPriceAndCid" resultMap="BaseResultMap">
+		SELECT * FROM classificationof_goods_item cgi
+			<where>
+			<if test="brand != null and brand != ''">
+					cgi.brand = #{brand}
+			</if>
+			<if test="priceOne != null  and priceTow != null ">
+					and cgi.price BETWEEN #{priceOne} and #{priceTow}
+			</if>
+			<if test="cId != null">
+				and cgi.cId = #{cId}
+			</if>
+			</where>
+			and cgi.showStatus = 1
+	</select>
+	
+	<!-- 根据 type表中的id集合 在筛选 -->
+	<select id="queryGoodsByTypeIds" resultMap="BaseResultMap">
+  			SELECT * FROM classificationof_goods_item cgi 
+  			<where>
+			<if test="brand != null and brand != ''">
+					cgi.brand = #{brand}
+			</if>
+			<if test="priceOne != null  and priceTow != null ">
+					and cgi.price BETWEEN #{priceOne} and #{priceTow}
+			</if>
+			<if test="cid != null">
+	 			and cgi.showStatus = 1 and cgi.`cId` IN
+				  	<foreach collection="cid" item="cid"
+				  		 open="(" separator="," close=")">
+				  		#{cid}
+				  	</foreach>
+		   </if>
+			</where>
+	  	
+ 	 </select>
 	
 	<select id="hotBuy" resultMap="BaseResultMap">
 		SELECT cgi.* from classificationof_goods_item cgi

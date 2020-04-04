@@ -29,6 +29,16 @@
   	SELECT id FROM classification_type WHERE cTionf_id = #{id}
   </select>
   
+  <select id="queryNameById" resultMap="BaseResultMap">
+  	SELECT * FROM classification_type ct WHERE ct.`id` = #{id}
+  	    AND ct.`name` = #{name} 
+  </select>
+  
+  <select id="queryDate" resultMap="BaseResultMap">
+  	SELECT * FROM classification_type ct WHERE ct.`id` = #{id}
+  	    AND ct.`name` = #{name} 
+  </select>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

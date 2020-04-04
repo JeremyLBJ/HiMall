@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.dao.ClassificationTypeMapper;
 import com.lhd.HiMall.dao.ClassificationofGoodsItemMapper;
 import com.lhd.HiMall.entity.ClassificationType;
@@ -89,6 +91,25 @@ public class ShopInfoServiceImpl implements ShopInfoService{
 		PageHelper.startPage(page, pageSize) ;
 		List<ClassificationofGoodsItem> list = classificationofGoodsItemMapper.findShopInfoById(id) ;
 		return list;
+	}
+
+	@Override
+	public ResultObject queryGoodsItem(int pageNum, int pageSize, String brand, Integer moneyOne,
+			Integer moneyTow, Integer cid) {
+		Page<Object> startPage = PageHelper.startPage(pageNum, pageSize) ;
+		List<ClassificationofGoodsItem> list = this.classificationofGoodsItemMapper.searchByBrandsOrPriceAndCid(brand, moneyOne, moneyTow, cid) ;
+		long total = startPage.getTotal() ;
+		return new ResultObject(total, list) ;
+	}
+
+	//根据cid集合查询
+	@Override
+	public ResultObject queryGoodsCidList(int pageNum, int pageSize, String brand, Integer moneyOne, Integer moneyTow,
+			List<Integer> cids) {
+		Page<Object> startPage = PageHelper.startPage(pageNum, pageSize) ;
+		List<ClassificationofGoodsItem> list = this.classificationofGoodsItemMapper.queryGoodsByTypeIds(brand, moneyOne, moneyTow, cids) ;
+		long total = startPage.getTotal() ;
+		return new ResultObject(total, list) ;
 	}
 
 

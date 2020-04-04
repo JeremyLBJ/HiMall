@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.entity.ClassificationType;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
 
@@ -34,5 +35,12 @@ public interface ShopInfoService {
 	 
 	 //查找所有商品排序
 	 List<ClassificationofGoodsItem> findShopDesc ( int page , int pageSize ,String brand , Integer moneyOne , Integer moneyTow  ) ;
+	 
+	 
+	 //价格   品牌   cid  查询
+	 ResultObject queryGoodsItem (int pageNum , int pageSize ,  String brand , Integer moneyOne , Integer moneyTow , Integer cid ) ;
+	 
+	 //根据  价格 品牌  cid集合  查询
+	 ResultObject queryGoodsCidList (int pageNum , int pageSize ,  String brand , Integer moneyOne , Integer moneyTow , List<Integer> cids ) ;
 
 }

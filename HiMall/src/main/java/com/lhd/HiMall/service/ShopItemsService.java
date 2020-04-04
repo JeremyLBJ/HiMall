@@ -2,6 +2,7 @@ package com.lhd.HiMall.service;
 
 import java.util.List;
 
+import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
 
 
@@ -19,5 +20,9 @@ public interface ShopItemsService {
 	
 	//根据type 中的id 查询goods表中的数据
 	Integer total ( Integer typeId ) ;
+	
+	//搜索功能
+	ResultObject queryBySearchName (int page , int PageSize , String brand , Integer priceOne , Integer priceTow) ;
+	
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.lhd.HiMallApplication;
+import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.dao.ClassificationTypeMapper;
 import com.lhd.HiMall.dao.ImginfoMapper;
 import com.lhd.HiMall.entity.ClassificationType;
@@ -18,6 +19,7 @@ import com.lhd.HiMall.entity.Classificationof;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
 import com.lhd.HiMall.entity.Classificationofgoods;
 import com.lhd.HiMall.entity.Imginfo;
+import com.lhd.HiMall.service.ShopInfoService;
 import com.lhd.HiMall.service.ShopItemsService;
 import com.lhd.HiMall.service.ShopTypeService;
 
@@ -26,6 +28,7 @@ import com.lhd.HiMall.service.ShopTypeService;
 @MapperScan("com.lhd.HiMall.dao")
 public class ShopTest {
 	
+
 	@Autowired
 	private ShopTypeService shopTypeService ;
 	
@@ -37,6 +40,9 @@ public class ShopTest {
 	
 	@Autowired
 	private ClassificationTypeMapper mapper ;
+	
+	@Autowired
+	private ShopInfoService shopInfoService ;
 	
 	
 	/**
@@ -133,6 +139,57 @@ public class ShopTest {
 		Integer id = 16 ;
 		List<Integer> list = this.mapper.queryIds(id ) ;
 		System.out.println(list) ;
+	}
+	
+	/**
+	 * 根据 cid 品牌  价格 查询
+	 */
+	@Test
+	public void queryGoodsByCid () {
+		int pageNum = 1 ;
+		int pageSize = 16 ;
+		String brand = "安踏" ;
+		Integer moneyOne = 0 ;
+		Integer moneyTow = 180 ;
+		Integer cid = 1 ;
+		ResultObject object = this.shopInfoService.queryGoodsItem(pageNum, pageSize, brand, moneyOne, moneyTow, cid) ;
+		System.out.println(object.toString()) ;
+	}
+	
+	/**
+	 * 根据  cid集合   品牌  价格 查询
+	 */
+	@Test
+	public void queryGoodsByCidList () {
+		Integer typeId = 16 ;
+		List<Integer> cids = this.shopItemService.queryIds(typeId ) ;
+		int pageNum = 1 ;
+		int pageSize = 16 ;
+		String brand = null ;
+		Integer moneyOne = 0 ;
+		Integer moneyTow = 180 ;
+		ResultObject object = this.shopInfoService.queryGoodsCidList(pageNum, pageSize, brand, moneyOne, moneyTow, cids) ;
+		System.out.println(object.toString()) ;
+	}
+	
+	
+	/**
+	 * 搜索
+	 */
+	@Test
+	public void searchGoods () {
+		int page = 1 ;
+		String brand = "" ;
+		int PageSize = 1000 ;
+		Integer priceOne = 69;
+		Integer priceTow = 180;
+		String brandName = "安" ;
+		if ( null == brand || brand.equals("")) {
+			brand = brandName ;
+			System.out.println("a");
+		}
+		ResultObject object = this.shopItemService.queryBySearchName(page, PageSize, brand, priceOne, priceTow) ;
+		System.out.println(object.toString()) ;
 	}
 	
 	

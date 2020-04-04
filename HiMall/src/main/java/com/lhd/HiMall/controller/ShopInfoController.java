@@ -3,8 +3,6 @@ package com.lhd.HiMall.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lhd.HiMall.common.Result;
+import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.dao.ImginfoMapper;
 import com.lhd.HiMall.entity.ClassificationType;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
@@ -42,7 +41,6 @@ public class ShopInfoController {
 	@Autowired
 	private ShopTypeService shopTypeService ;
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	//根据类型表中的id查出商品详情表中数据
 	@RequestMapping("/shopsInfo")
@@ -84,23 +82,58 @@ public class ShopInfoController {
 	}
 	
 	//根据品牌和价格动态查询
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/searchBrandOrMoney")
 	@ResponseBody
 	public Result searchByBrandOrMoney ( @RequestParam(defaultValue="1") int page , @RequestParam(defaultValue="1000") int pageSize 
-			                                 ,String brand , Integer moneyOne , Integer moneyTow , Model model ) {
-		logger.info("-------根据品牌和价格动态查询------"+ShopInfoController.class.getSimpleName());
-		List<ClassificationofGoodsItem> list = shopInfoService.searchByBrandAndMoney( page , pageSize , brand , moneyOne, moneyTow) ;
-		System.out.println(list);
-		if ( list.size() == 0 ) {
-			return new Result (0 , "暂时没有此商品" ) ;
-		} else {
-			for ( int i = 0 ; i < list.size() ; i++) {
-				Integer id =  list.get(i).getId() ;
-			     List<Imginfo> findImgPaths = imginfoMapper.findImgPaths(id);
-			     list.get(i).setImginfos(findImgPaths);
+			                                 ,String brand , Integer moneyOne , Integer moneyTow 
+			, Integer cId, String brandName, Model model) {
+		List<ClassificationofGoodsItem> list = new ArrayList<>();
+		Long totalPages = 0L ;
+		if (null != cId) {
+			//查询当前id 是否存在type表中
+			List<ClassificationType> tlist = this.shopTypeService.queryTypeDate(cId, brandName);
+			if (tlist.size() > 0) {
+				// 直接用cid 进行查询
+				ResultObject resultObject = this.shopInfoService.queryGoodsItem(page, pageSize, brand, moneyOne,
+						moneyTow, cId);
+				list = (List<ClassificationofGoodsItem>) resultObject.getData();
+				totalPages = resultObject.getCount() ;
+			} else {
+				List<Integer> ids = this.shopItemService.queryIds(cId);
+				// 根据classifitionof 中的cid 查询 id集合 在查询goods表中的数据
+				ResultObject object = this.shopInfoService.queryGoodsCidList(page, pageSize, brand, moneyOne, moneyTow,
+						ids);
+				list = (List<ClassificationofGoodsItem>) object.getData();
+				totalPages = object.getCount() ;
 			}
-			
-			return new Result ( 1 , "成功" , list) ;
+		} else {
+			// 搜索框中没有id这个参数  直接按照品牌 价格搜索 判断brand是否为空
+			ResultObject object = null ;
+			if ( null == brand || brand.equals("")) {
+				 object = this.shopItemService.queryBySearchName(page, pageSize, brandName, moneyOne, moneyTow) ;
+			} else {
+				 object = this.shopItemService.queryBySearchName(page, pageSize, brand, moneyOne, moneyTow) ;
+			}
+			list = (List<ClassificationofGoodsItem>) object.getData() ;
+			totalPages = object.getCount() ;
+		}
+		if (list.size() == 0) {
+			return new Result(0, "暂时没有此商品");
+		} else {
+			for (int i = 0; i < list.size(); i++) {
+				Integer id = list.get(i).getId();
+				List<Imginfo> findImgPaths = imginfoMapper.findImgPaths(id);
+				list.get(i).setImginfos(findImgPaths);
+			}
+			if ( list.size() % 16 == 0 ) {
+				totalPages = (long) (list.size() / 16) ; 
+			} else {
+				totalPages = (long) ( list.size() / 16 + 1 )  ;
+			}
+
+			model.addAttribute("TotalPages", totalPages) ;
+			return new Result(1, "成功", list);
 		}
 	}
 		
@@ -228,6 +261,7 @@ public class ShopInfoController {
 		model.addAttribute("TotalPages", totalPages) ;
 		model.addAttribute("bList", bList) ;
 		model.addAttribute("gList", list ) ;
+		model.addAttribute("id", id) ;
 		
 		return "shopTypeInfo" ;
 		

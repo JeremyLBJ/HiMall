@@ -23,5 +23,7 @@ public interface ShopTypeService {
 	
 	//查询GoodsItem
 	ClassificationofGoodsItem queryGoodById ( Integer id ) ;
+	
+	List<ClassificationType> queryTypeDate ( Integer id , String name) ;
 
 }

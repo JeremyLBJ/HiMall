@@ -85,6 +85,7 @@ public class DetailController {
 		System.out.println(lists);
 		model.addAttribute("slist",lists) ;
 		model.addAttribute("jumpUrl", "../../Detail/shopInfoFengye?id="+id) ;
+		model.addAttribute("id", id) ;
 		model.addAttribute("TotalPages", totalPages) ;
 		return "List" ; 
 		
@@ -130,6 +131,8 @@ public class DetailController {
 		Integer shopCid = queryHeading.getCid() ;
 		//查询最高级
 		Classificationofgoods queryById = this.shopTypeService.queryById(shopCid ) ;
+		//查询图片路劲
+		List<Imginfo> paths = this.imginfoMapper.findImgPaths(id) ;
 		model.addAttribute("name", type.getName()) ;
 		model.addAttribute("cOfName", queryHeading.getcOfName()) ;
 		model.addAttribute("cTypeName", queryById.getCtypename()) ;
@@ -138,6 +141,7 @@ public class DetailController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") ;
 		String format = formatter.format(item.getCreatetime()) ;
 		model.addAttribute("creaDate",format) ;
+		model.addAttribute("imgPath", paths.get(0).getImgpath()) ;
 		model.addAttribute("iList", item) ;
 		return "Detail" ; 
 		

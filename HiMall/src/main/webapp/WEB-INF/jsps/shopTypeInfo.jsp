@@ -49,8 +49,9 @@
     <div class="learing-list">
         <div class="list-box">
         	<input type="hidden" value="${jumpUrl}" id="jumpUrl">
+        	<input type="hidden" value="${id}" id="goodsId">
             <ul>
-                <li>  ${ param.name } </li>
+                <li id="brandName">  ${ param.name } </li>
             </ul>
             <ul>
                 <li>品牌：</li>
