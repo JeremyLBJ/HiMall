@@ -165,4 +165,11 @@ public class TbPositionCounty {
     public void setShortCountyId(Long shortCountyId) {
         this.shortCountyId = shortCountyId;
     }
+
+	@Override
+	public String toString() {
+		return "TbPositionCounty [id=" + id + ", cityId=" + cityId + ", countyId=" + countyId + ", countyName="
+				+ countyName + ", shortCountyId=" + shortCountyId + "]";
+	}
+    
 }

@@ -10,7 +10,10 @@ import com.github.pagehelper.PageHelper;
 import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.dao.ClassificationTypeMapper;
 import com.lhd.HiMall.dao.ClassificationofGoodsItemMapper;
+import com.lhd.HiMall.dao.ClothessizeMapper;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
+import com.lhd.HiMall.entity.Clothessize;
+import com.lhd.HiMall.entity.ClothessizeExample;
 import com.lhd.HiMall.service.ShopItemsService;
 
 
@@ -23,6 +26,9 @@ public class ShopItemsServiceImpl implements ShopItemsService{
 	
 	@Autowired
 	private ClassificationTypeMapper cTypeMapper ;
+	
+	@Autowired
+	private ClothessizeMapper cMapper ;
 	
 	public List<ClassificationofGoodsItem> seachShop (String name) {
 		List<ClassificationofGoodsItem> fuzzyQuery = classificationofGoodsItemMapper.fuzzyQuery(name);
@@ -61,6 +67,21 @@ public class ShopItemsServiceImpl implements ShopItemsService{
 		List<ClassificationofGoodsItem> list = this.classificationofGoodsItemMapper.searchGoodsItem(brand, priceOne, priceTow) ;
 		long total = startPage.getTotal() ;
 		return new ResultObject(total, list) ;
+	}
+
+	//根据id进行查询
+	@Override
+	public ClassificationofGoodsItem queryGoodsItemById(Integer id) {
+		ClassificationofGoodsItem item = this.classificationofGoodsItemMapper.selectByPrimaryKey(id) ;
+		return item ;
+	}
+
+	@Override
+	public List<Clothessize> queryClothessizeByCid(Integer cId) {
+		ClothessizeExample example = new ClothessizeExample() ;
+		example.createCriteria().andCidEqualTo(cId) ;
+		List<Clothessize> list = this.cMapper.selectByExample(example) ;
+		return list ;
 	}
 
 

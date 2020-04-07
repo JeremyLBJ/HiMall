@@ -20,6 +20,10 @@ public class Result {
 		this.code = code;
 		this.data = data;
 	}
+	public Result(Object data) {
+		super();
+		this.data = data;
+	}
 	public Result(int code, String msg) {
 		super();
 		this.code = code;

@@ -272,3 +272,11 @@ i{display: inline-block;background:#DFDFDF;color:black;padding: 0 5px }
 .dingbu2{width:60px;height:54px;position: fixed;bottom:15px;right:-3px;background: url("../images/index/edo_ico_44.png")no-repeat;z-index: 3}
 .dingbu2 a{width:60px;height:54px ;display: inline-block}
 .dingbu2:hover{background: url("../images/index/edo_ico_48.png")no-repeat}
+
+
+
+#selectProvice{width: 180px;height: 20px;}
+
+#selectCity{width: 180px;height: 20px;}
+
+#selectCounty{width: 180px;height: 20px;}

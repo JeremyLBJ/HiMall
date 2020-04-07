@@ -165,4 +165,10 @@ public class TbPositionCity {
     public void setShortCityId(Long shortCityId) {
         this.shortCityId = shortCityId;
     }
+
+	@Override
+	public String toString() {
+		return "TbPositionCity [id=" + id + ", proviceId=" + proviceId + ", cityId=" + cityId + ", cityName=" + cityName
+				+ ", shortCityId=" + shortCityId + "]";
+	}
 }

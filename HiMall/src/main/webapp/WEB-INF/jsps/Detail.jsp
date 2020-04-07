@@ -101,7 +101,7 @@
                 </div>
                 <div class="zuo-xia">
                     <div class="fx">
-                         <a id="jia"></a>
+                        <!--  <a id="jia"></a> -->
                     </div>
                 </div>
             </div>
@@ -127,36 +127,25 @@
              
                 <div class="leixing" style="margin-top: 5px">
                     <div class="leixing-ys">
-                        颜色分类 <span class="ys">红色</span><span>蓝色</span><span>白色</span><span>绿色</span>
+                    <c:forEach var="colors" items="${color}">
+                     	<span class="choseColor">${colors}</span>
+                     </c:forEach>
+                        
+                         <!-- <span>蓝色</span><span>白色</span><span>绿色</span> -->
                     </div>
                     <div class="leixing-cm">
                         尺码
                         <ol>
                             <li>
+                            <c:forEach var="cList" items="${cList}">
                                 <ul >
-                                    <li>S</li>
-                                    <li>100件可售</li>
-                                     <li><a ></a></li>
+                                    <li>${cList.size }</li>
+                                    <li>${cList.munbers}可售</li>
+                                     <li><input name="size" class="checkSize" type="radio" value="${cList.size}" /></li>
+                                     
                                    
                                 </ul>
-                                <ul >
-                                    <li>M</li>
-                                    <li>库存量99件</li>
-                                     <li><a ></a></li>
-                                 
-                                </ul>
-                                <ul >
-                                    <li>L</li>
-                                    <li>100件可售</li>
-                                    <li><a ></a></li>
-                                    
-                                </ul>
-                                <ul >
-                                    <li>XL</li>
-                                    <li>100件可售</li>
-                                     <li><a ></a></li>
-                                   
-                                </ul>
+                             </c:forEach>
                             </li>
                         </ol>
                     </div>
@@ -166,13 +155,13 @@
                     <div class="baokuan-shang">
                         <p>已售:<span>685</span>件成交</p>
                     </div>
-                    <p>建议零售价 <span>￥218.00</span></p>
-                    数量：<span class="jian"></span> <input type="text" value="1" > <span
-                                            class="jia"></span>
+                    <p>建议零售价 <span id="goodsMoney">${iList.price}</span></p>
+                    数量：<span class="jian" id="jian">-</span> <input style="width: 80px;" id="munbers" type="text" disabled="disabled" value="1" > <span
+                                            class="jia" id="jia">+</span>
                                 
                        
                     <div class="baokuan-zhong">
-                        运费 <span>￥0</span><!-- <a href="" class="dlk">淘宝活动报名登记</a> -->
+                        运费 <span id="freight">${freight}</span><!-- <a href="" class="dlk">淘宝活动报名登记</a> -->
                     </div>
                     <div class="baokuan-xia">
                       &nbsp;<span></span>
@@ -180,13 +169,14 @@
                 </div>
                 
                 <div class="xiadang">
-                    <p>共<em>0</em>件，总共￥<b>00.00</b>元</p>
+                    <p>共<em id="mun">0</em>件，总共 <b id="payMoney">00.00</b>元</p>
                     <!-- id="xiadang" class="dlk" -->
 						<a href="${pageContext.request.contextPath}../Carts/cart" class="dlk" id="jinhuodang"><img
 							src="${pageContext.request.contextPath}../images/xiangqingye/pro_bgad.jpg" />加入购物车</a><a
-							 href="${pageContext.request.contextPath}../payMent/PayMentTows" >立即下单</a>
+							<%--  href="${pageContext.request.contextPath}../payMent/PayMentTows" --%> id="xiadan" >立即下单</a>
 					</div>
             </div>
+           
         </div>
         <div class="main-content-you">
             <div class="pingpai">
@@ -201,6 +191,27 @@
                 <p>上架时间：</p>
                 <p>${creaDate}</p>
 
+            </div>
+        </div>
+        <div class="main-content-you">
+         <div class="pingpai">
+                <span>收货地址</span>
+            </div>
+            <div class="pingjia">
+        	 <!-- 省份选择 -->
+            <select id="selectProvice" required="required">
+			  
+			</select>
+            <!-- 区级选择 -->
+            <select id="selectCity" required="required">
+            
+            </select>
+            <!-- 城市选择 -->
+            <select id="selectCounty" required="required">
+            
+            </select>
+            <p>详细地址:</p>
+            <input type="text" id="address">
             </div>
         </div>
     </div>

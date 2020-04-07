@@ -1,6 +1,7 @@
 package com.lhd.HiMall.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,15 @@ import com.lhd.HiMall.entity.ClassificationType;
 import com.lhd.HiMall.entity.Classificationof;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
 import com.lhd.HiMall.entity.Classificationofgoods;
+import com.lhd.HiMall.entity.Clothessize;
 import com.lhd.HiMall.entity.Imginfo;
+import com.lhd.HiMall.entity.TbPositionCity;
+import com.lhd.HiMall.entity.TbPositionCounty;
+import com.lhd.HiMall.entity.TbPositionProvice;
 import com.lhd.HiMall.service.DetailService;
 import com.lhd.HiMall.service.IndexService;
 import com.lhd.HiMall.service.ShopInfoService;
+import com.lhd.HiMall.service.ShopItemsService;
 import com.lhd.HiMall.service.ShopTypeService;
 
 
@@ -46,6 +52,9 @@ public class DetailController {
 	
 	@Autowired
 	private ShopTypeService shopTypeService ;
+	
+	@Autowired
+	private ShopItemsService shopItemService ;
 	
 	
 	@RequestMapping("/detail")
@@ -133,6 +142,16 @@ public class DetailController {
 		Classificationofgoods queryById = this.shopTypeService.queryById(shopCid ) ;
 		//查询图片路劲
 		List<Imginfo> paths = this.imginfoMapper.findImgPaths(id) ;
+		//根据商品表中的id 获取cid
+		List<Clothessize> list = this.shopItemService.queryClothessizeByCid(item.getCid()) ;
+		//存放颜色的集合
+		List<String> color = new ArrayList<>() ;
+		for (Clothessize c : list) {
+			if (! color.contains(c.getColor()) ) {
+				color.add(c.getColor()) ;
+			}
+			
+		 }
 		model.addAttribute("name", type.getName()) ;
 		model.addAttribute("cOfName", queryHeading.getcOfName()) ;
 		model.addAttribute("cTypeName", queryById.getCtypename()) ;
@@ -143,6 +162,9 @@ public class DetailController {
 		model.addAttribute("creaDate",format) ;
 		model.addAttribute("imgPath", paths.get(0).getImgpath()) ;
 		model.addAttribute("iList", item) ;
+		model.addAttribute("color", color) ; //颜色
+		model.addAttribute("freight", list.get(0).getFreight()) ; //运费
+		model.addAttribute("cList", list) ; //尺寸
 		return "Detail" ; 
 		
 	}
@@ -152,6 +174,36 @@ public class DetailController {
 		List<Classificationofgoods> list = indexService.findAll();
 		model.addAttribute("fList", list);
 		return "List";
+	}
+	
+	/**
+	 * 省
+	 */
+	@RequestMapping("/provice")
+	@ResponseBody
+	public Result Provice () {
+		List<TbPositionProvice> list = this.detailService.queryProviceById() ;
+			return new Result(list) ;
+	}
+	
+	/**
+	 * 市区
+	 */
+	@RequestMapping("/city")
+	@ResponseBody
+	public Result city ( Integer proviceId ) {
+		List<TbPositionCity> list = this.detailService.queryCityByProviceId(proviceId) ;
+		return new Result(list) ;
+	}
+	
+	/**
+	 * 城市
+	 */
+	@RequestMapping("/county")
+	@ResponseBody
+	public Result county ( Long cityId ) {
+		List<TbPositionCounty> list = this.detailService.queryCountyByCityId(cityId) ;
+		return new Result(list) ;
 	}
 
 }

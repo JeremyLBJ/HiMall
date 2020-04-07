@@ -1,12 +1,12 @@
 $(function () {
 
-    var y = JSON.parse(sessionStorage.getItem("login")).uyhm;
+    var y = JSON.parse(sessionStorage.getItem("login"));
     $(".header-content .header-zuo>em").html("Hi," + y)
     var gid = null;
     $.ajax({
         url: "./../server/gouwuche.php",
         type: "post",
-        data: {uid: JSON.parse(sessionStorage.getItem("login")).uid}
+        data: {uid: JSON.parse(sessionStorage.getItem("login"))}
     }).then(function (res) {
         var str = "";
         var shula = 0;
@@ -48,7 +48,7 @@ $(function () {
             url: "./../server/xiugaishuliang.php",
             type: "post",
             data: {
-                "uid": JSON.parse(sessionStorage.getItem("login")).uid,
+                "uid": JSON.parse(sessionStorage.getItem("login")),
                 "gid": gid,
                 "shuliang": sl,
                 "chima":chima,
@@ -76,7 +76,7 @@ $(function () {
                 url: "./../server/xiugaishuliang.php",
                 type: "post",
                 data: {
-                    "uid": JSON.parse(sessionStorage.getItem("login")).uid,
+                    "uid": JSON.parse(sessionStorage.getItem("login")),
                     "gid": gid,
                     "shuliang": sl,
                     "chima":chima,
@@ -96,7 +96,7 @@ $(function () {
             url: "./../server/shangchu.php",
             type: "post",
             data: {
-                uid: JSON.parse(sessionStorage.getItem("login")).uid,
+                uid: JSON.parse(sessionStorage.getItem("login")),
                 gid: gid,
                 chima:chima1,
                 yanse:yanse1

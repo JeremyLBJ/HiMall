@@ -129,78 +129,21 @@
                     <div class="right-box">
                         <div class="tit">精品TOP榜</div>
                         <div class="contList">
+                         <c:forEach var="top" items="${topList}">
                             <div class="contList-item">
                                 <div class="box hov">
                                     <div class="info">
-                                        <p>Think PHP 5.0 博客系统实战项目演练</p>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
+                                        <p>${top.cname }</p>
+                                        <p>${top.brand }</p>
+                                        <li><span>价格</span> <em> · </em> ${top.price}</li>
                                     </div>
                                     <div class="infoImg">
-                                        <div><img src="${pageContext.request.contextPath}../img/widget-topBg.png" width="100%" height="110" alt=""></div>
-                                        <div class="desc">通过对ThinkPHP框架基础，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制……</div>
+                                        <div><img src="/image/${top.imginfos[0].imgpath}" width="100%" height="110" alt=""></div>
+                                        <%-- <div class="desc">${top.detail }</div> --%>
                                     </div>
                                 </div>
                             </div>
-                            <div class="contList-item">
-                                <div class="box">
-                                    <div class="info">
-                                        <p>Think PHP 5.0 博客系统实战项目演练</p>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </div>
-                                    <div class="infoImg">
-                                        <div><img src="../img/widget-topBg.png" width="100%" height="110" alt=""></div>
-                                        <div class="desc">通过对ThinkPHP框架基础，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制……</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="contList-item">
-                                <div class="box">
-                                    <div class="info">
-                                        <p>Think PHP 5.0 博客系统实战项目演练</p>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </div>
-                                    <div class="infoImg">
-                                        <div><img src="../img/widget-topBg.png" width="100%" height="110" alt=""></div>
-                                        <div class="desc">通过对ThinkPHP框架基础，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制……</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="contList-item">
-                                <div class="box">
-                                    <div class="info">
-                                        <p>Think PHP 5.0 博客系统实战项目演练</p>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </div>
-                                    <div class="infoImg">
-                                        <div><img src="../img/widget-topBg.png" width="100%" height="110" alt=""></div>
-                                        <div class="desc">通过对ThinkPHP框架基础，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制……</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="contList-item">
-                                <div class="box">
-                                    <div class="info">
-                                        <p>Think PHP 5.0 博客系统实战项目演练</p>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </div>
-                                    <div class="infoImg">
-                                        <div><img src="../img/widget-topBg.png" width="100%" height="110" alt=""></div>
-                                        <div class="desc">通过对ThinkPHP框架基础，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制……</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="contList-item">
-                                <div class="box">
-                                    <div class="info">
-                                        <p>Think PHP 5.0 博客系统实战项目演练</p>
-                                        <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                    </div>
-                                    <div class="infoImg">
-                                        <div><img src="../img/widget-topBg.png" width="100%" height="110" alt=""></div>
-                                        <div class="desc">通过对ThinkPHP框架基础，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制……</div>
-                                    </div>
-                                </div>
-                            </div>
+                           </c:forEach>
                         </div>
 
                         <div class="tit">猜你喜欢</div>

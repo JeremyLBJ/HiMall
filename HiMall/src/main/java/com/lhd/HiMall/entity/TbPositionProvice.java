@@ -132,4 +132,12 @@ public class TbPositionProvice {
     public void setShortProviceId(Long shortProviceId) {
         this.shortProviceId = shortProviceId;
     }
+
+	@Override
+	public String toString() {
+		return "TbPositionProvice [id=" + id + ", proviceId=" + proviceId + ", proviceName=" + proviceName
+				+ ", shortProviceId=" + shortProviceId + "]";
+	}
+    
+    
 }

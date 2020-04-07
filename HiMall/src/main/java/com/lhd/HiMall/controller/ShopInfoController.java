@@ -258,6 +258,17 @@ public class ShopInfoController {
 				totalPages = ( list.size() / 16 + 1 )  ;
 			}
 		}
+		if ( list.size() <= 6 && list.size() > 0 ) {
+			model.addAttribute("topList", list) ;
+		} else {
+			List<ClassificationofGoodsItem> list2 = this.shopTypeService.queryGppdsByShopTypeId( 1 , 6 ,id ) ;
+			for ( int i = 0 ; i < list2.size() ; i++) {
+				Integer ids2 =  list2.get(i).getId() ;
+				List<Imginfo> findImgPath = imginfoMapper.findImgPaths(ids2);
+				list2.get(i).setImginfos(findImgPath);
+			}
+			model.addAttribute("topList", list2) ;
+		}
 		model.addAttribute("TotalPages", totalPages) ;
 		model.addAttribute("bList", bList) ;
 		model.addAttribute("gList", list ) ;

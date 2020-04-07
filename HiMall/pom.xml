@@ -203,6 +203,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>HiMAall</finalName>
 		<plugins>
 			<plugin>
             <groupId>org.springframework.boot</groupId>
@@ -216,6 +217,20 @@
                 <execution> <goals> <goal>repackage</goal> </goals> </execution>
             </executions>
         </plugin>
+        
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <verbose>true</verbose>
+                <fork>true</fork>
+                <encoding>UTF-8</encoding>
+                 <source>1.8</source>
+                 <target>1.8</target>
+            </configuration>
+        </plugin> 
+        
 		</plugins>
 		
 		
@@ -241,6 +256,15 @@
                 <filtering>false</filtering>
             </resource>   
              -->
+             
+              <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
             
              <resource>
                 <!-- JSP包打包到资源里 -->
@@ -266,5 +290,5 @@
 	</build>
 
   
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 </project>

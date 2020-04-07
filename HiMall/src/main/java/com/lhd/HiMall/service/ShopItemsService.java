@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lhd.HiMall.common.ResultObject;
 import com.lhd.HiMall.entity.ClassificationofGoodsItem;
+import com.lhd.HiMall.entity.Clothessize;
 
 
 
@@ -23,6 +24,11 @@ public interface ShopItemsService {
 	
 	//搜索功能
 	ResultObject queryBySearchName (int page , int PageSize , String brand , Integer priceOne , Integer priceTow) ;
+	
+	//根据ID 进行查询
+	ClassificationofGoodsItem queryGoodsItemById ( Integer id ) ;
+	
+	List<Clothessize> queryClothessizeByCid ( Integer cId ) ;
 	
 	
 }

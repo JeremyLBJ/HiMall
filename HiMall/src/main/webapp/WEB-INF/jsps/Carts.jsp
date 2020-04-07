@@ -35,9 +35,9 @@
 <div class="sousuo">
     <div class="sousuo-content">
         <h1>买家中心</h1>
-        <div><input type="text"><img src="${pageContext.request.contextPath}../images/gouwuche/sousuo.PNG"/>
+       <%--  <div><input type="text"><img src="${pageContext.request.contextPath}../images/gouwuche/sousuo.PNG"/>
             <d>搜索</d>
-        </div>
+        </div> --%>
     </div>
 </div>
 <div class="nav">
@@ -73,8 +73,21 @@
                 </tr> -->
                 </thead>
                 <tbody>
+						<tr>
+							<td><input type="checkbox"><img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_64.jpg"
+								alt=""></td>
+							<td>图片样式或者介绍<br>
+							<span>收到回复就好看看</span></td>
+							<td><em><b>发生大部分的季后赛</b><i><u>多少度</u><span
+										class="jian">-</span> <input type="text"
+										value="11"> <span class="jia"">+</span></i></em></td>
+							<td>￥<b>120</b></td>
+							<td>好看</td>
+							<td>￥<b>120</b></td>
+							<td class="sc"></td>
+						</tr>
 
-                </tbody>
+					</tbody>
                 <tfoot>
                     <tr>
                         <td colspan="7">已进货商品 <span>  </span> 件 合计（不含运费）： <em>  </em>  <button>计算</button></td>
