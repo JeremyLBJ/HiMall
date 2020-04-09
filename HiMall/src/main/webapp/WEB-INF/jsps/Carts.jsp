@@ -19,13 +19,14 @@
 <div class="header">
     <div class="header-content">
         <div class="header-zuo">
-            <em></em>
+            <em>Hi:${loginUser.username}</em>
+            <input type="hidden" value="${loginUser.id}" id="userId">
             <span></span>
             
         </div>
         <div class="header-you">
             <ul>
-                <li><a href="${pageContext.request.contextPath}../shouye/index">商城首页</a></li>
+                <li><a href="${pageContext.request.contextPath}../HiMall/index">商城首页</a></li>
                 <li><a href="#">在线客服</a></li>
                 <li><a href="#">我的购物车 </a></li>
             </ul>
@@ -53,8 +54,8 @@
     <div class="main-content">
         <div class="img">
             <img src="${pageContext.request.contextPath}../images/gouwuche/dsImg_64.jpg"/>
-            <span>您的进货车还没有货品！</span><br>
-            <span>现在<a href="${pageContext.request.contextPath}../shouye/index">去逛逛~</a></span>
+            <span>您的购物车车还没有货品！</span><br>
+            <span>现在<a href="${pageContext.request.contextPath}../HiMall/index">去逛逛~</a></span>
         </div>
         <div class="bg">
             <table>

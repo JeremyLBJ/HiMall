@@ -264,4 +264,11 @@ public class UsersTable {
     public void setSalt(String salt) {
         this.salt = salt == null ? null : salt.trim();
     }
+
+	@Override
+	public String toString() {
+		return "UsersTable [id=" + id + ", username=" + username + ", password=" + password + ", useravatar="
+				+ useravatar + ", email=" + email + ", sex=" + sex + ", tel=" + tel + ", salt=" + salt + "]";
+	}
+    
 }

@@ -21,6 +21,7 @@
         <div class="header-content-zuo">
             <span><a href="#">欢迎来到多商网</a></span> <span><a href="Login.html">请登录</a> | <a href="sign.html">免费注册</a></span>
         </div>
+        <input type="hidden" value="${id}" id="goodsId">
         <div class="header-content-you">
             <ul>
             <li>
@@ -85,7 +86,7 @@
 <div class="main">
     <div class="main-content">
         <div class="main-content-shang">
-            <p>${detail }</p>
+            <p id="goodsDetail">${detail }</p>
             <p><span>支持淘宝店快速上架和一件代发货</span><span>支持多件商品批发采购</span></p>
         </div>
         <div class="main-content-zt">
@@ -171,7 +172,7 @@
                 <div class="xiadang">
                     <p>共<em id="mun">0</em>件，总共 <b id="payMoney">00.00</b>元</p>
                     <!-- id="xiadang" class="dlk" -->
-						<a href="${pageContext.request.contextPath}../Carts/cart" class="dlk" id="jinhuodang"><img
+						<a <%-- href="${pageContext.request.contextPath}../Carts/cart" --%> class="dlk" id="jinhuodang"><img
 							src="${pageContext.request.contextPath}../images/xiangqingye/pro_bgad.jpg" />加入购物车</a><a
 							<%--  href="${pageContext.request.contextPath}../payMent/PayMentTows" --%> id="xiadan" >立即下单</a>
 					</div>
@@ -212,6 +213,8 @@
             </select>
             <p>详细地址:</p>
             <input type="text" id="address">
+            <p>电话号码</p>
+            <input type="text" id="telPhone" required="required">
             </div>
         </div>
     </div>

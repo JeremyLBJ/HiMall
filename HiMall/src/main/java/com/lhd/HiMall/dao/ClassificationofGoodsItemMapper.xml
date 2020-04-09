@@ -202,6 +202,28 @@
 	  	</foreach>
 	  	
   </select>
+  
+   <select id="queryByOrderListCid" resultMap="BaseResultMap">
+  			SELECT * FROM classificationof_goods_item cgi WHERE cgi.showStatus = 1 and cgi.`id` IN
+	  	<foreach collection="list" item="id"
+	  		 open="(" separator="," close=")">
+	  		#{id}
+	  	</foreach>
+	  	
+  </select>
+  
+  
+  <select id="queryGoodsByCartCid" resultMap="BaseResultMap">
+  		SELECT ct.*,cgi.id,cgi.cName,cgi.price,cgi.brand,cgi.detail 
+  		FROM carts_table ct 
+		JOIN classificationof_goods_item cgi 
+		ON cgi.id = ct.cId 
+		WHERE cgi.showStatus = 1 AND  ct.userId = #{userId} 
+  </select>
+  
+  <select id="queryByCartCid" resultMap="BaseResultMap">
+  	select * from classificationof_goods_item cgi where cgi.showStatus = 1 AND  cgi.id = #{cId}
+  </select>
 	
   
   

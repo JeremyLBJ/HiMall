@@ -165,6 +165,7 @@ public class DetailController {
 		model.addAttribute("color", color) ; //颜色
 		model.addAttribute("freight", list.get(0).getFreight()) ; //运费
 		model.addAttribute("cList", list) ; //尺寸
+		model.addAttribute("id", id) ;
 		return "Detail" ; 
 		
 	}

@@ -30,7 +30,7 @@
                 <div class="">
                      <div class="nav-list">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="../../shouye/index">首页</a></li>
+                            <li class="active"><a href="../../HiMall/index">首页</a></li>
                             <li><a href="#">登录</a></li>
                             <li><a href="#">用户注册</a></li>
                             <li></li>
@@ -39,7 +39,7 @@
 
 							<!--此处判断用户是否登录  -->
                     <div class="sign-in">
-                        <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${pageContext.request.contextPath}../img/asset-myImg.jpg" alt=""> 孙老师</a>
+                        <a href="../../../user/userCenter" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${pageContext.request.contextPath}../img/asset-myImg.jpg" alt=""> ${loginUser.username}</a>
                     </div>
                 </div>
             </nav>

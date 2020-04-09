@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -40,18 +41,26 @@
         <div class="learing-pay">
             <div class="tit">
                 <div class="info">
-                    <p><span>订单号：1029474937463</span> <span>支付金额：<em>￥ 1000</em></span></p>
-                    <p><span>订单详情 <i class="	glyphicon glyphicon-download"></i></span></p>
+					<p>
+						<span>订单号：${rioId}</span> 
+						<span>支付金额：<em>￥ ${price}</em></span>
+						<span>收货地址:<em>${address}</em></span>
+					</p>
+
+					<p><span>订单详情 <i class="	glyphicon glyphicon-download"></i></span></p>
                 </div>
 
             </div>
             <div class="pay-list">
                 <div class="top"><span>名称</span><span>小计(元)</span></div>
                 <div class="row">
-                    <p><span>Python爬虫：脚本爬虫和Scrapy框架</span><span>2000</span></p>
-                    <p><span>Python爬虫：脚本爬虫和Scrapy框架</span><span>120</span></p>
+                <c:forEach var="g" items="${goods}">
+                	<p><span>${g.detail}</span><span>${g.price }</span></p>
+                </c:forEach>
+                    
+                  <!--   <p><span>Python爬虫：脚本爬虫和Scrapy框架</span><span>120</span></p>
                     <p><span>Python爬虫：脚本爬虫和Scrapy框架</span><span>1500</span></p>
-                    <p><span>Python爬虫：脚本爬虫和Scrapy框架</span><span>1200</span></p>
+                    <p><span>Python爬虫：脚本爬虫和Scrapy框架</span><span>1200</span></p> -->
                 </div>
             </div>
             <div class="tit">选择支付方式</div>

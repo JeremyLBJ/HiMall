@@ -17,6 +17,15 @@ $(function () {
  var goodsSize ; //尺寸
  
  
+ var munber = $("#munbers").val() ;
+ var munbers = parseInt(munber) ;
+ var payPrice = $("#goodsMoney").html() ;
+ var payMoney = parseInt(payPrice) ;
+ var freightMoney = $("#freight").html() ;
+ var freightPaice = parseInt(freightMoney) ;
+ $("#mun").html(munbers) ;
+ $("#payMoney").html((munbers*payMoney)+freightPaice) ;
+ 
  //选中
  $(".choseColor").click(function(){
 	 $("#colors").removeAttr("class") ;//移除属性
@@ -101,17 +110,64 @@ $(function () {
 	 var options=$("#selectProvice option:selected"); //获取选中的项
 	 var option=$("#selectCity option:selected"); //获取选中的项
 	 var selectCounty=$("#selectCounty option:selected"); //获取选中的项
+	 var id = $("#goodsId").val() ;
 	 //地址
 	 var address = $("#address").val() ;
-	 console.log("颜色:::::::"+colors) ;
-	 console.log("尺码:::::::"+size) ;
-	 console.log("价格:::::::"+price) ;
-	 console.log("数量:::::::"+mun) ;
-	 console.log("运费:::::::"+freight) ;
-	 console.log("省份id:::::"+options.text()) ;
-	 console.log("区县ID:::::"+option.text() ) ;
-	 console.log("城市ID:::::"+selectCounty.text()) ;
-	 console.log("地址:::::::"+address) ;
+	 var addres ;
+	 if ( address == null || address == "") {
+		 addres = options.text() + option.text() + selectCounty.text() ;
+	 } else {
+		 addres = options.text() + option.text() + selectCounty.text() + address ;
+	 }
+	 var tel = $("#telPhone").val() ;
+	 if ( tel == null || tel == "" || addres == null ) {
+		 alert('请填写相关信息') ;
+	 } else {
+		 $.get("../../../orderList/order"
+					,{
+						color : colors
+					   ,size : size
+					   ,munbers : mun
+					   ,freight : freight
+					   ,address : addres
+					   ,price :price
+					   ,id : id
+					   ,tel : tel
+					}
+					,function(data){
+						if (data.code == 1) {
+							window.location.href = '../../../payMent/PayMentTows?rioId='+data.msg ;
+						} else {
+							alert('下单失败,请重新操作');
+						}
+			 }) ;
+	 }
+
+ }) ;
+ 
+ //购物车
+ $("#jinhuodang").click(function(){
+	 var id = $("#goodsId").val() ;
+	 //数量
+	 var mun = $("#munbers").val() ;
+	//价格
+	 var price = $("#goodsMoney").html() ;
+	 //运费
+	 var freight = $("#freight").html() ;
+	 var totalPrice = (mun*price) + freight ;
+	 $.get("../../../Carts/addCarts",
+			{
+		 		id : id
+		 	  , mun : mun
+		 	  , totalPrice : totalPrice
+			}
+	 ,function(res){
+		 if ( res.code == 1 ) {
+			 alert('添加成功') ;
+		 } else {
+			 alert('添加失败') ;
+		 }
+	 })
  }) ;
  
  function queryCityByProvieId (proviceId) {

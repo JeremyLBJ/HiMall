@@ -16,7 +16,7 @@ import com.lhd.HiMall.service.IndexService;
  *
  */
 @Controller
-@RequestMapping("/shouye")
+@RequestMapping("/HiMall")
 public class IndexController {
 	
 	

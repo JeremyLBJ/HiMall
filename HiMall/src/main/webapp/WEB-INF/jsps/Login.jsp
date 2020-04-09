@@ -125,7 +125,7 @@ $('#btn').click(function(){
           success: function(r) {
               if(r.code == 1) {
                   alert('操作成功')
-                  window.location.href = '../../../shouye/index';
+                  window.location.href = '../../../HiMall/index';
               }else{
                   alert(r.msg);
               }

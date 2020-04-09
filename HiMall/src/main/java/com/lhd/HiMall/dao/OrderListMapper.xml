@@ -21,6 +21,10 @@
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="isShow" jdbcType="INTEGER" property="isshow" />
   </resultMap>
+  
+  <select id="queryCids" resultType="java.lang.Integer">
+  		SELECT cId FROM order_list WHERE rioId = #{rioId}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

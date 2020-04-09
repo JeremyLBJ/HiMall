@@ -1,30 +1,34 @@
 $(function () {
 
-    var y = JSON.parse(sessionStorage.getItem("login"));
-    $(".header-content .header-zuo>em").html("Hi," + y)
     var gid = null;
     $.ajax({
-        url: "./../server/gouwuche.php",
+        url: "../../../Carts/cartInfo",
         type: "post",
-        data: {uid: JSON.parse(sessionStorage.getItem("login"))}
+        data: {uid: $("#userId").val()}
     }).then(function (res) {
         var str = "";
         var shula = 0;
         var zje = 0;
-        if (res.status == 1) {
+        if (res.code == 1) {
             var info = JSON.stringify(res.data)
             var xixi = JSON.parse(info);
             //console.log(xixi[0]);
             $(xixi).each(function (index, el) {
                 $(".img").css("display", "none")
                 $(".bg table").css("display", "block")
-                str += `<tr><td><input type="checkbox"><img src="${el.img}" alt=""></td><td>${el.uminchen}<br><span>${el.huohao}</span></td><td><em><b>${el.yanse}</b><i><u>${el.chima}</u><span class="jian">-</span> <input type="text" value="${el.shuliang}"> <span class="jia"">+</span></i></em></td><td>￥<b>${el.danjia}</b></td><td>${el.shuliang}</td><td>￥<b>${el.zonjine}</b></td><td class="sc"></td></tr>`
+                str += `<tr><td><input type="checkbox">
+                <img src="/image/${el.items[0].imginfos[0].imgpath}" alt=""></td><td>${el.items[0].cname}<br>
+                <span>${el.items[0].brand}</span></td><td><em><b>${el.color}</b><i><u>${el.items[0].brand}</u>
+                <span class="jian">-</span> <input type="text" value="${el.num}"> 
+                <span class="jia"">+</span></i></em></td><td>￥<b>${el.items[0].price}</b></td>
+                <td>${el.num}</td><td>￥<b>${el.totalprice}</b></td><td class="sc">
+                </td></tr>`
                 $(".main-content .bg table tbody").html(str)
                 shula += parseInt(el.shuliang)
                 zje += parseFloat(el.zonjine)
                 $(".main-content .bg table tfoot tr:eq(0) td span").html(shula)
                 $(".main-content .bg table tfoot tr:eq(0) td em").html(zje)
-                gid = el.gid;
+                gid = el.id;
             })
 
         }
@@ -93,17 +97,18 @@ $(function () {
         var chima1=$(this).parent().children("td:eq(2)").children("em").children("b").text();
         var yanse1=$(this).parent().children("td:eq(2)").children("em").children("i").children("u").text();
         $.ajax({
-            url: "./../server/shangchu.php",
+            url: "../../../Carts/deleteCartGoods",
             type: "post",
             data: {
-                uid: JSON.parse(sessionStorage.getItem("login")),
-                gid: gid,
-                chima:chima1,
-                yanse:yanse1
+                uid: $("#userId").val(),
+                gid: gid
             }
         }).then(function (res) {
-            if(res.status==1){
-             // location="carts.html"
+            if(res.code==1){
+            	alert('删除成功') ;
+              location="../../../Carts/cart" ;
+            } else {
+            	alert('删除失败') ;
             }
         })
 

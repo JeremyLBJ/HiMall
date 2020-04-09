@@ -19,7 +19,7 @@ spring:
   mail:
     host: smtp.qq.com
     username: 1447076355@qq.com # 这里填写个人的qq邮箱
-    password: aghmefjkwysdihfg # 注：这里不是qq邮箱的密码，而是授权码
+    password: fjjtihmsagdrfijf # 注：这里不是qq邮箱的密码，而是授权码
     default-encoding: UTF-8
 #发送地址
 mail:
