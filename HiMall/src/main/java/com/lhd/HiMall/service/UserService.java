@@ -22,5 +22,5 @@ public interface UserService  {
 	void addUserAddress ( UserAddress address ) ;
 	
 	void updateAddressById ( UserAddress address ) ;
-
+	
 }

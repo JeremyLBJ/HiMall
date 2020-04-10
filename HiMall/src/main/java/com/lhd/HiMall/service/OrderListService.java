@@ -19,6 +19,10 @@ public interface OrderListService {
 	
 	List<Orderlistmsg> queryByRioId (String rioId) ;
 	
+	List<OrderList> queryOrderListDesc ( Integer userId ) ;
+	
+	List<OrderList> queryORderLsit ( Integer userId ) ;
+	
 	
 	
 

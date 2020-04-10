@@ -19,7 +19,7 @@
 <div class="header">
     <div class="header-content">
         <div class="header-content-zuo">
-            <span><a href="#">欢迎来到多商网</a></span> <span><a href="Login.html">请登录</a> | <a href="sign.html">免费注册</a></span>
+            <span><a href="#">欢迎来到多商网</a></span> <span><a href="../../../user/login">请登录</a> | <a href="../../../user/register">免费注册</a></span>
         </div>
         <input type="hidden" value="${id}" id="goodsId">
         <div class="header-content-you">
@@ -194,29 +194,7 @@
 
             </div>
         </div>
-        <div class="main-content-you">
-         <div class="pingpai">
-                <span>收货地址</span>
-            </div>
-            <div class="pingjia">
-        	 <!-- 省份选择 -->
-            <select id="selectProvice" required="required">
-			  
-			</select>
-            <!-- 区级选择 -->
-            <select id="selectCity" required="required">
-            
-            </select>
-            <!-- 城市选择 -->
-            <select id="selectCounty" required="required">
-            
-            </select>
-            <p>详细地址:</p>
-            <input type="text" id="address">
-            <p>电话号码</p>
-            <input type="text" id="telPhone" required="required">
-            </div>
-        </div>
+     
     </div>
 </div>
 </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -51,7 +52,7 @@
                     <p>${loginUser.username}</p>
                 </div>
                 <div class="item">
-                    <li class="active"><a href="" class="glyphicon glyphicon-tower"> 我的购物车<i class="pull-right">></i></a></li>
+                    <li class="active"><a href="../../../Carts/cart" class="glyphicon glyphicon-tower"> 我的购物车<i class="pull-right">></i></a></li>
                     <li><a href="#001" class="glyphicon glyphicon-list-alt"> 我的订单<i class="pull-right">></i></a> </li>
                     <li><a href="../../../HiMall/index" class="glyphicon glyphicon-log-out"> 退出<i class="pull-right">></i></a></li>
                 </div>
@@ -65,18 +66,17 @@
 
                     <div class="top-cont">
                         <div class="col-lg-8">
-                            <div class="imgIco"><img src="../img/asset-timg.png" width="60" height="28" alt=""></div>
-                            <div class="title"><span class="lab">继续学习</span> 程序语言设计 <span class="status">学习中</span></div>
-                            <div class="about"><span class="lab">正在学习</span> 使用对象 <span class="data">有效日期: 2017.06.05 - 2018.06.05</span></div>
+                            <div class="imgIco"></div>
+                            <div class="title"><span class="lab">订单号:<em style="color: red">${rioid}</em></span></div>
+                            <div class="rate"> <span class="data">商品:<em style="color: blue">${cname }</em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;品牌:<em style="color: blue">${brand }</em> </div>
+                             <div class="rate"> <span class="data">${detail }</span></div>
                             <div class="rate">
-                                <li class="active"></li>
-                                <li></li>
-                                <li></li>
-                                <li></li><span>1/4 已完成部分</span> <span>进度25%</span></div>
+                                <span>价格:${price}</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <span >总价:<em style="color: red">${totalPrice}</em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量:<em style="color: blue">${mun}</em></div>
                         </div>
                         <div class="division"></div>
                         <div class="col-lg-4 text-right">
-                            <a href="#" class="goLear"> 查看商品详情</a>
+                            <a href="../../../Detail/shopInfo?id=${id}" class="goLear"> 查看商品详情</a>
                             <a href="../../../HiMall/index" class="evalu"> 继续逛逛</a>
                             <div class="aft" style="top:0px;right:0px;">
                                 <ul></ul>
@@ -96,7 +96,7 @@
                         <div class="col-lg-6">
                             <div class="item">
                             <div class="title">用户个人信息</div>
-                                <div class="title"><span class="lab">姓名</span> ${loginUser.username} <!-- <span class="status"></span> -->
+                                <div class="title"><span class="lab">姓名:</span> ${loginUser.username} <!-- <span class="status"></span> -->
                                     <div class="aft">
                                         <ul></ul>
                                     </div>
@@ -104,7 +104,9 @@
                                 <div class="time"><span class="lab">性别:</span>&nbsp;&nbsp;&nbsp; ${loginUser.sex} </div>
                                 <div class="time">电话号码: ${loginUser.tel}</div>
                                 <div class="rate">
-                                   <span>邮箱:<em>${loginUser.email}</em></span></div>
+                                   <span>邮箱:<em>${loginUser.email}</em></span>
+                                 </div>
+                                   
                                 <div class="parting"></div>
                                 
                             </div>
@@ -140,28 +142,43 @@
                         	<div class="lab-title"><a name="001" id="001" ></a>我的订单</div>
                    		 </div>
                         <div class="clearfix">
-                         <div class="col-lg-6">
-                            <div class="item">
-                                <div class="imgIco"><img src="../img/asset-timg.png" width="60" height="28" alt=""></div>
-                                <div class="title"><span class="lab">继续学习</span> 程序语言设计 <span class="status outst">已结业</span>
-                                    <div class="aft">
-                                        <ul></ul>
-                                    </div>
-                                </div>
-                                <!--<div class="about"><span class="lab">正在学习</span>  使用对象 </div>-->
-                                <div class="time">有效日期: 2017.06.05 - 2018.06.05</div>
-                                <!--<div class="rate"><li class="active"></li><li></li><li></li><li></li><span>1/4 已完成部分 <em>进度 25%</em></span></div>-->
-                                <div class="comment">
-                                    <div class="star-show">
-                                        <div class="score"><i></i></div>
-                                    </div>
-                                    <div class="text">课程打分 <em>4.9星</em></div>
-                                </div>
-                                <div class="parting"></div>
-                                <div class="butItem text-center"><a href="#" class="golearing">开启课程</a> <a href="#" class="classcom">课程评价</a></div>
-                            </div>
-                        </div>
-                        
+                          <c:forEach var="o" items="${oList}">
+                      
+	                         <div class="col-lg-6">
+	                            <div class="item">
+	                                <div class="imgIco"></div>
+	                                <div class="title"><span class="lab">订单号:<em style="color: red">${o.rioid}</em></span></span>
+	                                    <div class="aft">
+	                                        <ul></ul>
+	                                    </div>
+	                                </div>
+	                                <div class="time">
+	                                <span class="lab">商品名称:&nbsp;&nbsp;<em>${o.item.cname }</em></span>
+	                                	品牌:&nbsp;&nbsp;<em>${o.item.brand }</em>
+	                                 </div>
+	                                <div class="time">${o.item.detail } </div>
+	                                <div class="rate">
+		                                <span>单价:${o.item.price } 
+		                                	<em>数量:</em><em>${o.numbers }</em>
+		                                	<em>总价:</em><em>${o.paymoney}</em>
+		                                </span>
+	                                </div>
+	                                 <div class="rate">
+		                                <span>
+		                                 <em>电话号码:</em>
+		                                 <em>${o.tel }</em>
+		                                </span>
+	                                </div>
+	                                <div class="comment">
+	                                    <!-- <div class="star-show">
+	                                        <div class="score"><i></i></div>
+	                                    </div> -->
+	                                    <div class="text">收货地址: <em>${o.address }</em></div>
+	                                </div>
+	                                <div class="parting"></div>
+	                            </div>
+	                        </div>
+                        </c:forEach>
                         </div>
                     </div>
                 </div>

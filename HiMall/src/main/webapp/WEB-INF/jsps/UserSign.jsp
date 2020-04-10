@@ -22,17 +22,17 @@
     <!-- 页面 -->
     <div class="register">
         <!--<img src="../../assets/img/logoico.png" alt="logo" width="200">-->
-        <a href="index" class="backIndex">返回首页</a>
+        <a href="../../../HiMall/index" class="backIndex">返回首页</a>
         <div class="register-body container text-center">
-            <div class="signIco"><img src="../img/asset-logoIco.png" alt="logo" width="180"></div>
+            <div class="signIco"><img src="${pageContext.request.contextPath}../images/index/h1.png" alt="logo" width="180"></div>
             <div class="signTit cl"></div>
-            <a href="tologin">已有账号，立即登录→</a>
+            <a href="../../../user/login">已有账号，立即登录→</a>
 				<div class="regItem show">
 					<div>
 						<p>用户名</p>
 						<p>
 							<input type="text" name="username" class="textInput"
-								placeholder="请输入用户名" onclick="checkUser()" id="username"
+								placeholder="请输入用户名" required="required" onclick="checkUser()" id="username"
 								value=""> 
 							<span id="user"></span>
 						</p>
@@ -41,9 +41,9 @@
 						<p>邮箱</p>
 						<p>
 							<input type="email" name="email" class="textInput"
-								placeholder="请输入邮箱" id="email" onclick="checkEmail()"
+								placeholder="请输入邮箱" id="email" required="required" onclick="checkEmail()"
 								value=""> <input type="submit"
-								class="codeSub" value="发送验证码" onclick="getCode()" id="email_check" style="border:#ddd 1px;" disabled="true">
+								class="codeSub" value="发送验证码" required="required" onclick="getCode()" id="email_check" style="border:#ddd 1px;" disabled="true">
 								<span id="cemail"></span> 
 						</p>
 					</div>
@@ -51,14 +51,14 @@
 						<p>邮箱验证码</p>
 						<p>
 							<input type="text" name="code" class="textInput" id="code"
-								placeholder="请输入验证码"> <span class="proof cl-orange"></span>
+								placeholder="请输入验证码" required="required"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
 					<div>
 						<p>设置密码</p>
 						<p>
 							<input type="password" name="password" class="textInput"
-								placeholder="请设置密码" onclick="checkPwd()" id="demo_input">
+								placeholder="请设置密码" required="required" onclick="checkPwd()" id="demo_input">
 								 <span id="pwd"></span>
 						</p>
 					</div>
@@ -188,6 +188,9 @@
     		  if ($("input[name='sex']").prop("checked") == true) {
     			  sex = $("input[name='sex']").val() ;
     		  }
+    		  if (username == "" || email == "" || code == "" || password == "" || tel == "" ){
+    			  alert('所有项均为必填项') ;
+    		  } else {
     		 $.post("../../../user/userRegister",
     				{
     					username : username
@@ -204,6 +207,7 @@
     						location="../../../user/login" ;
     					}
     				}) ;
+    		  }
     	})
 </script>
 </body>

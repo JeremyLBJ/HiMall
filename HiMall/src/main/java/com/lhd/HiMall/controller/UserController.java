@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.lhd.HiMall.common.Result;
+import com.lhd.HiMall.entity.ClassificationofGoodsItem;
+import com.lhd.HiMall.entity.OrderList;
 import com.lhd.HiMall.entity.UserAddress;
 import com.lhd.HiMall.entity.UsersTable;
+import com.lhd.HiMall.service.OrderListService;
+import com.lhd.HiMall.service.ShopItemsService;
 import com.lhd.HiMall.service.UserService;
 import com.lhd.HiMall.untils.WebUntils;
 
@@ -25,6 +29,13 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private OrderListService orderListService ;
+	
+	@Autowired
+	private ShopItemsService shopItemService ;
+	
 	UsersTable users = new UsersTable() ;
 	
 	//  ${loginUser == null ? 'Hi,请登录' : '欢迎:'.concat(loginUser.cnName)}
@@ -116,6 +127,19 @@ public class UserController {
 		model.addAttribute("county", list.get(0).getCounty()) ;
 		//详细地址
 		model.addAttribute("address", list.get(0).getAddress()) ;
+		//根据用户ID查询订单信息
+		List<OrderList> list2 = this.orderListService.queryOrderListDesc(id) ;
+		ClassificationofGoodsItem item = this.shopItemService.queryGoodsItem(list2.get(0).getCid()) ;
+		List<OrderList> oRderLsit = this.orderListService.queryORderLsit(id) ;
+		model.addAttribute("oList", oRderLsit) ;
+		model.addAttribute("cname", item.getCname()) ;
+		model.addAttribute("brand", item.getBrand()) ;
+		model.addAttribute("detail", item.getDetail()) ;
+		model.addAttribute("id", item.getId()) ;
+		model.addAttribute("price", item.getPrice()) ;
+		model.addAttribute("mun", list2.get(0).getNumbers()) ;
+		model.addAttribute("rioid", list2.get(0).getRioid()) ;
+		model.addAttribute("totalPrice", list2.get(0).getPaymoney()) ;
 		return "UserCenter";
 	}
 	

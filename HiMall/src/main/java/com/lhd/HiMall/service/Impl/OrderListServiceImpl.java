@@ -1,6 +1,7 @@
 package com.lhd.HiMall.service.Impl;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +66,7 @@ public class OrderListServiceImpl implements OrderListService {
 	@Override
 	public OrderList queryOrderListMsg(String rioId) {
 		List<Integer> list = this.orderListMapper.queryCids(rioId) ;
+		@SuppressWarnings("unused")
 		List<ClassificationofGoodsItem> listCid = this.item.queryByOrderListCid(list) ;
 		return null;
 	}
@@ -82,6 +84,36 @@ public class OrderListServiceImpl implements OrderListService {
 		example.createCriteria().andRioidEqualTo(rioId) ;
 		List<Orderlistmsg> list = this.omMapper.selectByExample(example) ;
 		return list ;
+	}
+
+	@Override
+	public List<OrderList> queryOrderListDesc(Integer userId) {
+		OrderListExample example = new OrderListExample() ;
+		example.createCriteria().andUseridEqualTo(userId);
+		example.setOrderByClause("createTime DESC") ;
+		List<OrderList> list = this.orderListMapper.selectByExample(example) ;
+		return list ;
+	}
+
+	@Override
+	public List<OrderList> queryORderLsit(Integer userId) {
+		OrderListExample example = new OrderListExample() ;
+		example.createCriteria().andUseridEqualTo(userId) ;
+		List<OrderList> list = this.orderListMapper.selectByExample(example ) ;
+		List<OrderList> oList = new ArrayList<>() ;
+		List<String> rList = new ArrayList<>() ;
+			for (int i = 0; i < list.size(); i++) {
+				if (!rList.contains(list.get(i).getRioid())) {
+					rList.add(list.get(i).getRioid());
+					ClassificationofGoodsItem goodsItem = item.selectByPrimaryKey(list.get(i).getCid()) ;
+					list.get(i).setItem(goodsItem) ;
+					oList.add(list.get(i));
+					if (oList.size() == 4) {
+						return oList ;
+					}
+			}
+		}
+			return oList ;
 	}
 
 
